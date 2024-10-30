@@ -25,7 +25,7 @@
 ### Semester Assignments
 
 - Link to Assignment 1: [**Assignment 1**](https://github.com/mmajic03/HCI/blob/main/assignments/assigment1.mkv) <!-- Replace with actual URL -->
-- Link to Assignment 2: [**Assignment 2**](URL_TO_ASSIGNMENT_2) <!-- Replace with actual URL -->
+- Link to Assignment 2: [**Assignment 2**](https://boiled-packet-d4d.notion.site/Korisni-ka-su-elja-projekt-12fb0a75ac3c805c9d6eec232135c5e8) <!-- Replace with actual URL -->
 - Link to Assignment 3: [**Assignment 3**](URL_TO_ASSIGNMENT_3) <!-- Replace with actual URL -->
 <!-- Add more assignments as necessary -->
 
