@@ -50,10 +50,19 @@ function processPage(page: Page, index: number, pathname: string) {
 }
 
 export function Navigation() {
-    const pathname = usePathname();
+  const pathname = usePathname();
+
   return (
-    <ul className="flex justify-center space-x-4 mt-8">
-      {pages.map((page, index) => processPage(page, index, pathname))}
-    </ul>
+    <header className="bg-white shadow w-full py-8">
+      <nav className="max-w-7xl mx-auto">
+        <ul className="flex justify-center space-x-12">
+          {pages.map((page, index) => (
+            <li key={index}>
+              {processPage(page, index, pathname)}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 }

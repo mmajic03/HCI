@@ -17,8 +17,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | coolcook.",
-    default: "coolcook.",
+    template: "%s | CoolCook",
+    default: "CoolCook",
   },
   description: "CoolCook",
 };
