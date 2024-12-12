@@ -27,7 +27,6 @@
 - Link to Assignment 1: [**Assignment 1**](https://github.com/mmajic03/HCI/blob/main/assignments/assigment1.mkv) <!-- Replace with actual URL -->
 - Link to Assignment 2: [**Assignment 2**](https://boiled-packet-d4d.notion.site/Korisni-ka-su-elja-projekt-12fb0a75ac3c805c9d6eec232135c5e8) <!-- Replace with actual URL -->
 - Link to Assignment 3: [**Assignment 3**](https://coolcook.vercel.app/) <!-- Replace with actual URL -->
-- Link to Assignment 4: [**Assignment 4**](https://www.notion.so/High-fidelity-prototype-15a26d18c24380a1a3edd265432af27c?pvs=4)
 <!-- Add more assignments as necessary -->
 
 ## Project Requirements
