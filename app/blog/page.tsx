@@ -54,7 +54,7 @@ export default async function Blog() {
               </p>
               <Link
                 href={`/blog/${post.id}`}
-                className="mt-auto inline-block text-center bg-[#70966D] text-white py-2 px-4 rounded hover:bg-blue-600"
+                className="mt-auto inline-block text-center bg-[#70966D] text-white py-2 px-4 rounded hover:bg-[#496047]"
               >
                 Read More
               </Link>
