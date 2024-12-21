@@ -53,9 +53,12 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-white shadow w-full py-8">
-      <nav className="max-w-7xl mx-auto">
-        <ul className="flex justify-center space-x-12">
+    <header className="bg-[#70966D] shadow-2xl w-full py-8 flex items-center justify-between">
+      <div className="flex items-center space-x-2">
+          <img src="../logoCC.png" className="h-14 w-auto pl-3" />
+        </div>
+      <nav className="max-w-7xl mr-8">
+        <ul className="flex space-x-12">
           {pages.map((page, index) => processPage(page, index, pathname))}
         </ul>
       </nav>
