@@ -56,11 +56,7 @@ export function Navigation() {
     <header className="bg-white shadow w-full py-8">
       <nav className="max-w-7xl mx-auto">
         <ul className="flex justify-center space-x-12">
-          {pages.map((page, index) => (
-            <li key={index}>
-              {processPage(page, index, pathname)}
-            </li>
-          ))}
+          {pages.map((page, index) => processPage(page, index, pathname))}
         </ul>
       </nav>
     </header>
