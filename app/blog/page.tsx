@@ -1,4 +1,4 @@
-import { Navigation } from "../components/navigation";
+//import { Navigation } from "../components/navigation";
 import Link from "next/link";
 
 export type BlogRecipePost = {
@@ -20,10 +20,9 @@ export type BlogRecipePost = {
   mealType: string[];
 };
 
-export const BASE_API_URL = "https://dummyjson.com";
 
 async function getBlogPosts(): Promise<BlogRecipePost[]> {
-  const response = await fetch(`${BASE_API_URL}/recipes`);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes`);
   const data = await response.json();
   return data.recipes;
 }
