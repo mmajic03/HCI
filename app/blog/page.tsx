@@ -31,7 +31,7 @@ export default async function Blog() {
   const blogPosts: BlogRecipePost[] = await getBlogPosts();
 
   return (
-    <main className="bg-[#A3967C] flex min-h-screen flex-col items-center p-20">
+    <main className="bg-[#A3967C] w-screen flex min-h-screen flex-col items-center p-20">
       <h1 className="text-6xl font-extrabold tracking-tight mb-10">Blog</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full m-20">
         {blogPosts.map((post) => (

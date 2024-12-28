@@ -53,7 +53,7 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-[#70966D] shadow-2xl w-full py-8 flex items-center justify-between">
+    <header className="bg-[#70966D] shadow-2xl w-screen py-8 flex items-center justify-between">
       <div className="flex items-center space-x-2">
           <img src="../logoCC.png" className="h-14 w-auto pl-3" />
         </div>
