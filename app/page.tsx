@@ -12,10 +12,36 @@ export default function Home() {
           </p>
         </div>
       </div>
-
-      <div>
-        
+      <div  className="w-full mt-10">
+        <h2 className="text-4xl font-bold text-right mb-8 mr-60">Recommended recipes</h2>
+        <div className="flex flex-col md:flex-row">
+          <div className="w-auto bg-[#E4E0D3] p-6 rounded-lg">
+            <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Meals</h3>
+              <ul className="font-kadwa mb-6">
+                <li><input type="checkbox" className="mr-2"/>Breakfast</li>
+                <li><input type="checkbox" className="mr-2"/>Lunch</li>
+                <li><input type="checkbox" className="mr-2"/>Dinner</li>
+                <li><input type="checkbox" className="mr-2"/>Soup</li>
+                <li><input type="checkbox" className="mr-2"/>Desserts</li>
+                <li><input type="checkbox" className="mr-2"/>Snacks</li>
+              </ul>
+            <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Primary ingredient</h3>
+              <ul className=" font-kadwa mb-6">
+                <li><input type="checkbox" className="mr-2"/>Meat</li>
+                <li><input type="checkbox" className="mr-2"/>Fish</li>
+                <li><input type="checkbox" className="mr-2"/>Vegetables</li>
+                <li><input type="checkbox" className="mr-2"/>Fruits</li>
+                <li><input type="checkbox" className="mr-2"/>Pasta</li>
+              </ul>
+            <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Preparation time</h3>
+              <ul className="font-kadwa mb-6">
+                <li><input type="checkbox" className="mr-2"/>&lt; 15 min</li>
+                <li><input type="checkbox" className="mr-2"/>15 - 45min</li>
+                <li><input type="checkbox" className="mr-2"/>&gt; 45 min</li>
+              </ul>
+          </div>
+        </div>
       </div>
     </main>
   );
-}
+} 

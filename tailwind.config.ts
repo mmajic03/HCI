@@ -15,6 +15,7 @@ const config: Config = {
       fontFamily: {
         kalam: ['Kalam', 'cursive'], 
         instrument: ['Instrument', 'sans'],
+        kadwa: ['Kadwa', 'serif'],
       },
     },
   },
