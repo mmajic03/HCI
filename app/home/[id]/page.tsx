@@ -27,14 +27,14 @@ export default async function HomePage({ params }: PageProps) {
             className="w-full h-67 object-contain rounded-t-lg"
           />
           <div className="p-6">
-            <p className="mt-4 text-grey-800">
+            <div className="mt-4 text-grey-800">
               <span className="font-semibold text-black">Ingredients:</span>
               <ul className="mt-4 list-disc list-inside text-gray-700 space-y-2">
                 {recipePost.ingredients.map((ingredient, index) => (
                   <li key={index} className="list-none">{ingredient}</li>
                 ))}
               </ul>
-            </p>
+            </div>
           <h2 className="mt-6 text-xl font-semibold text-black">Instructions</h2>
           <ol className="mt-4 list-decimal list-inside text-gray-700 space-y-2">
             {recipePost.instructions.map((instruction, index) => (
