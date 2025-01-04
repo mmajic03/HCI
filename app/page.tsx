@@ -14,7 +14,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mt-10 flex flex-col lg:flex-row lg:gap-10 w-full">
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row max-h-[600px] mt-[76px]">
           <div className="lg:w-[100%] md:w-1/2 sm:w-full bg-[#E4E0D3] p-6 rounded-lg flex flex-col">
             <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Meals</h3>
             <ul className="font-kadwa mb-6">
@@ -117,5 +117,5 @@ export default function Home() {
       </div>
     </footer>
   </main>
-  );
+);
 }
