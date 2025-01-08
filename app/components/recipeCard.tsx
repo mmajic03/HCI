@@ -1,7 +1,7 @@
-//import { Navigation } from "../components/navigation";
+
 import Link from "next/link";
 
-export type BlogRecipePost = {
+export type RecipePost = {
   id: number;
   name: string;
   ingredients: string[];
@@ -21,20 +21,21 @@ export type BlogRecipePost = {
 };
 
 
-async function getBlogPosts(): Promise<BlogRecipePost[]> {
+async function getRecipePosts(): Promise<RecipePost[]> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes`);
   const data = await response.json();
   return data.recipes;
 }
 
-export default async function Blog() {
-  const blogPosts: BlogRecipePost[] = await getBlogPosts();
+export default async function Card() {
+  const recipePosts: RecipePost[] = await getRecipePosts();
+
+  const limitedRecipePosts = recipePosts.slice(0, 9);
 
   return (
-    <main className="bg-[#A3967C] w-screen flex min-h-screen flex-col items-center p-20">
-      <h1 className="text-6xl font-extrabold tracking-tight mb-10">Blog</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full m-20">
-        {blogPosts.map((post) => (
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {limitedRecipePosts.map((post) => (
           <div
             key={post.id}
             className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col border border-balck-200"
@@ -52,7 +53,7 @@ export default async function Blog() {
                 {post.ingredients.join(", ")}
               </p>
               <Link
-                href={`/blog/${post.id}`}
+                href={`/home/${post.id}`}
                 className="mt-auto inline-block text-center bg-[#70966D] text-white py-2 px-4 rounded hover:bg-[#496047]"
               >
                 Read More
@@ -61,6 +62,6 @@ export default async function Blog() {
           </div>
         ))}
       </div>
-    </main>
+   
   );
 }
