@@ -15,6 +15,13 @@
       "when": 1736443006687,
       "tag": "0001_lyrical_veda",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1736858790409,
+      "tag": "0002_graceful_spot",
+      "breakpoints": true
     }
   ]
 }
