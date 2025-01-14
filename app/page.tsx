@@ -18,10 +18,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-10 flex flex-col lg:flex-row lg:gap-10 w-full">
+      <div className="mt-1 flex flex-col lg:flex-row lg:gap-10 w-full">
         <Filters />
         <div className="flex-1">
-          <h2 className="text-4xl font-kalam text-white font-bold text-center mb-8 mr-20">Recommended recipes</h2>
+        <h2 className="text-4xl font-kalam text-white font-bold text-center mb-8 mt-[20px] sm:mt-12 md:mt-16 lg:mt-[76px] w-full">Recommended recipes</h2>
           <div>
             <Card></Card>
           </div>
@@ -32,7 +32,7 @@ export default function Home() {
       <div className="flex space-x-6 mt-5 w-screen bg-[#70966D] p-6 rounded-lg h-[250px] justify-center items-center gap-6">
         <PopularRecipes/>
       </div>
-      
+
       <h2 className="text-4xl font-kalam text-white font-bold text-center mt-[60px] mb-5">Top users</h2>
       <TopUsers/>
 
