@@ -1,5 +1,7 @@
 import Card from "./components/recipeCard";
 import Footer from "./components/footer";
+import PopularRecipes from "./components/PopularRecipes";
+import TopUsers from "./components/TopUsers";
 
 export default function Home() {
   return (
@@ -52,30 +54,13 @@ export default function Home() {
       </div>
 
       <h2 className="text-4xl font-kalam text-white font-bold text-center mt-[150px]">Popular recipes</h2>
-      <div className="mt-5 w-full bg-[#70966D] p-6 rounded-lg h-[250px]"></div>
+      <div className="flex space-x-6 mt-5 w-screen bg-[#70966D] p-6 rounded-lg h-[250px] justify-center items-center gap-6">
+        <PopularRecipes/>
+      </div>
+
 
       <h2 className="text-4xl font-kalam text-white font-bold text-center mt-[60px] mb-5">Top users</h2>
-      <div className="mt-10 mb-10 w-full flex justify-center">
-        <div className="flex justify-around w-[70%] items-center flex-wrap mb-6">
-          {[
-            { name: "Emily", image: "/Emily.jpeg" },
-            { name: "Olivia", image: "/Olivia.jpeg" },
-            { name: "James", image: "/James.jpeg" },
-            { name: "Sophia", image: "/Sophia.jpeg" },
-            { name: "Benjamin", image: "/Benjamin.jpeg" },
-          ].map((user, index) => (
-            <div key={index} className="flex flex-col items-center space-y-2">
-              <div className="h-[120px] w-[120px] rounded-full overflow-hidden">
-                <img
-                  src={user.image}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <span className="text-lg font-semibold">{user.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      <TopUsers/>
 
       <Footer />
     </main>
