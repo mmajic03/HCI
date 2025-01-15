@@ -1,11 +1,27 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function PopularRecipes() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  
-  const numItems = 10; 
-  const itemsPerView = 4;
+  const [itemsPerView, setItemsPerView] = useState(4); 
+
+  const numItems = 10;
+
+  const updateItemsPerView = () => {
+    if (window.innerWidth < 640) {
+      setItemsPerView(1); 
+    } else if (window.innerWidth < 1024) {
+      setItemsPerView(2);
+    } else {
+      setItemsPerView(4);
+    }
+  };
+
+  useEffect(() => {
+    updateItemsPerView(); 
+    window.addEventListener('resize', updateItemsPerView); 
+    return () => window.removeEventListener('resize', updateItemsPerView); 
+  }, []);
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -20,7 +36,7 @@ export default function PopularRecipes() {
   };
 
   const processItem = (index: number) => {
-    const adjustedIndex = (index + numItems) % numItems; 
+    const adjustedIndex = (index + numItems) % numItems;
     return (
       <div
         key={adjustedIndex}
@@ -40,7 +56,6 @@ export default function PopularRecipes() {
         &#9664;
       </button>
 
-      
       <div className="flex overflow-hidden w-full justify-center gap-4">
         {Array.from({ length: itemsPerView }).map((_, index) =>
           processItem(currentIndex + index)
@@ -56,4 +71,3 @@ export default function PopularRecipes() {
     </div>
   );
 }
-3
