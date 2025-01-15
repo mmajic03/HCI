@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RecipePost } from "./recipeCard"; 
+import Image from "next/image";
 
 type RecipeCardProps = {
   post: RecipePost;
@@ -12,10 +13,12 @@ export default function RecipeCard({ post }: RecipeCardProps) {
       className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col border border-black-200"
     >
       <div className="h-40 w-full p-4">
-        <img
+        <Image
           src={post.image}
           alt={post.name}
           className="h-48 w-full object-cover rounded"
+          width={500} 
+          height={200}
         />
       </div>
       <div className="p-10 flex flex-col flex-grow">

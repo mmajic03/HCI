@@ -1,5 +1,6 @@
 //import { Navigation } from "../components/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export type BlogRecipePost = {
   id: number;
@@ -40,10 +41,12 @@ export default async function Blog() {
             className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col border border-balck-200"
           >
             <div className="h-40 w-full p-4">
-              <img
+              <Image
                 src={post.image}
                 alt={post.name}
                 className="h-48 w-full object-cover rounded"
+                width={500} 
+                height={200}
               />
             </div>
             <div className="p-10 flex flex-col flex-grow">

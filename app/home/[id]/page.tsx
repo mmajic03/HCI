@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 import { RecipePost } from "../../components/recipeCard";
 
 type PageProps = {
@@ -21,9 +21,11 @@ export default async function HomePage({ params }: PageProps) {
       <div className="bg-[#A3967C] min-h-screen flex items-center justify-center">
         <div className="w-11/12 max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">{recipePost.name}</h1>
-          <img
+          <Image
             src={recipePost.image}
             alt={recipePost.name}
+            width={500} 
+            height={200}
             className="w-full h-67 object-contain rounded-t-lg"
           />
           <div className="p-6">

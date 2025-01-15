@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { supabase } from "@/src/supabase/storage";
+import Image from "next/image";
 
 export default function UploadProfileImage() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -54,9 +55,11 @@ export default function UploadProfileImage() {
     <div className="flex flex-col items-center">
       <div className="mb-4">
         {previewUrl ? (
-          <img
+          <Image
             src={previewUrl}
             alt="Selected profile"
+            width={56} 
+            height={56}
             className="w-40 h-40 rounded-full object-cover"
           />
         ) : (

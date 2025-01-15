@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+
 const users = [
     { name: "Emily", image: "/Emily.jpeg" },
     { name: "Olivia", image: "/Olivia.jpeg" },
@@ -13,9 +16,13 @@ const users = [
           {users.map((user, index) => (
             <div key={index} className="flex flex-col items-center space-y-2">
               <div className="h-[120px] w-[120px] rounded-full overflow-hidden">
-                <img
+                <Image
                   src={user.image}
+                  alt="user image"
+                  width={56}
+                  height={56}
                   className="h-full w-full object-cover"
+                  
                 />
               </div>
               <span className="text-lg font-semibold">{user.name}</span>
