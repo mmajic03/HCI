@@ -6,8 +6,7 @@ export default function RecipesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mt-4">
-      <Navigation />
+    <section>
       {children}
     </section>
   );
