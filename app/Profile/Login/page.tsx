@@ -30,7 +30,7 @@ export default function Login() {
             <button type="submit" className="w-full bg-[#70966D] text-white font-medium py-3 rounded-lg hover:bg-[#557046] transition">Log In</button>
           </form>
           <p className="text-center text-sm text-gray-600 mt-4">
-            Don&apost have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/Profile" className="text-[#678D58] font-medium hover:underline">Sign Up</Link>
           </p>
         </div>
