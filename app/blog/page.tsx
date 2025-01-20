@@ -1,3 +1,4 @@
+
 import { getPosts, getPostsCount, Post } from "./_lib/api";
 import Pagination from './__components/pagination';
 import Link from "next/link";
