@@ -26,7 +26,7 @@ async function getPosts({
     _limit = PAGE_SIZE,
 }: PagingInfo): Promise<Post[]> {
     const data = await fetch(
-        `${process.env.BASE_API_URL}/posts/?_start=${_start}&_limit=${_limit}`
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/posts/?_start=${_start}&_limit=${_limit}`
     );
     return data.json();
 }
