@@ -13,7 +13,7 @@ export type Post = {
 const PAGE_SIZE = Number(process.env.NEXT_PUBLIC_PAGE_SIZE);
 
 async function getPostsCount(): Promise<number> {
-    const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/posts/?_limit=1`, {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_BLOG_API}/posts/?_limit=1`, {
         method: "HEAD",
     });
     let count: string | number = data.headers.get("x-total-count") || "1";
@@ -26,7 +26,7 @@ async function getPosts({
     _limit = PAGE_SIZE,
 }: PagingInfo): Promise<Post[]> {
     const data = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_API_URL}/posts/?_start=${_start}&_limit=${_limit}`
+        `${process.env.NEXT_PUBLIC_BLOG_API}/posts/?_start=${_start}&_limit=${_limit}`
     );
     return data.json();
 }
