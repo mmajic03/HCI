@@ -44,7 +44,22 @@ export default async function Recipes({ searchParams }: BlogPageProps) {
   const _start = (currentPage - 1) * PAGE_SIZE;
   const _limit = PAGE_SIZE;
 
-  const posts = await getPosts({ _start, _limit });
+ 
+  let posts: Post[] = [];
+
+  try {
+    const response = await getPosts({ _start, _limit });
+
+    posts = Array.isArray(response)
+      ? response
+      : typeof response === "object" && response !== null
+      ? Object.values(response) 
+      : [];
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+    posts = [];
+  }
+
 
   return (
     <div className="bg-[#A3967C] min-h-screen flex flex-col">
