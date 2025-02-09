@@ -1,10 +1,8 @@
 "use client";
-import React, { useState } from "react";
 import { Navigation } from "../_components/navigation";
 import Image from "next/image";
 
 const ProfilePage = () => {
-  const [activePage, setActivePage] = useState("profile");
   return (
     <div className="h-[820px] bg-[#A48F73] flex flex-col items-center">
       <main className="w-full max-w-5xl bg-[#EDE8DF] mt-[130px] p-8 rounded-2xl shadow-lg flex">
@@ -105,7 +103,7 @@ const ProfilePage = () => {
                 />
               </div>
             </div>
-            
+
             <button
               type="submit"
               className="mt-6 px-3 py-2 bg-[#70966D] text-black rounded-lg shadow hover:bg-[#467242] focus:outline-none focus:ring-2 focus:ring-[#70966D]"
