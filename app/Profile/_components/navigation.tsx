@@ -1,46 +1,40 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 type Page = {
   title: string;
-  path: `/${string}`;
+  key: string;
 };
 
 const pages: Page[] = [
-  {
-    title: "My profile",
-    path: "/Profile/MyProfile",
+  { 
+    title: "My Profile", 
+    key: "profile" 
   },
-  {
-    title: "Saved Recipes",
-    path: "/Profile/SavedRecipes",
+  { 
+    title: "Saved Recipes", 
+    key: "savedRecipes" 
   },
-  {
-    title: "Shopping List",
-    path: "/Profile/ShoppingList",
-  }
+  { 
+    title: "Shopping List", 
+    key: "shoppingList" 
+  },
 ];
-function processPage(page: Page, index: number, pathname: string) {
-  return (
-    <li key={index}>
-      <Link
-        href={page.path}
-        className={
-          pathname === page.path ? "font-extrabold text-[#477734]" : ""
-        }
-      >
-        {page.title}
-      </Link>
-    </li>
-  );
-}
-export function Navigation() {
-  const pathname = usePathname();
-  console.log(pathname);
+
+export function Navigation({ activeTab, setActiveTab }: { activeTab: string; setActiveTab: (tab: string) => void }) {
   return (
     <ul className="flex flex-col space-y-4 mt-8">
-      {pages.map((page, index) => processPage(page, index, pathname))}
+      {pages.map((page) => (
+        <li key={page.key}>
+          <button
+            onClick={() => setActiveTab(page.key)}
+            className={`text-left w-full ${
+              activeTab === page.key ? "font-extrabold text-[#477734]" : "text-gray-800"
+            }`}
+          >
+            {page.title}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }
