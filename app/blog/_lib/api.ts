@@ -16,8 +16,8 @@ async function getPostsCount(): Promise<number> {
     const data = await fetch(`${process.env.NEXT_PUBLIC_BLOG_API}/posts/?_limit=1`, {
         method: "HEAD",
     });
-    let count: string | number = data.headers.get("x-total-count") || "1";
-    count = parseInt(count, 10);
+    const countHeader = data.headers.get("x-total-count");
+    const count = countHeader ? parseInt(countHeader, 10) : 0; 
     return count;
 }
 
