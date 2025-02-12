@@ -10,21 +10,21 @@ type Page = {
 };
 
 const pages: Page[] = [
-  { title: "Home", path: "/" },
+  { title: "HOME", path: "/" },
   {
-    title: "Recipes",
+    title: "RECIPES",
     path: "/recipes",
   },
   {
-    title: "Inspiration",
+    title: "INSPIRATION",
     path: "/inspiration",
   },
   {
-    title: "Blog",
+    title: "BLOG",
     path: "/blog",
   },
   {
-    title: "My profile",
+    title: "MY PROFILE",
     path: "/Profile",
   },
 ];
@@ -37,10 +37,10 @@ function processPage(page: Page, index: number, pathname: string) {
         className={
           page.path === "/"
             ? pathname === page.path
-              ? "font-extrabold"
+              ? "border-2 border-[#20501d] p-2 rounded"
               : ""
             : pathname.startsWith(page.path)
-            ? "font-extrabold"
+            ? "border-2 border-[#275a23] p-2 rounded"
             : ""
         }
       >
@@ -55,7 +55,7 @@ export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-[#70966D] shadow-2xl w-screen py-8 flex items-center justify-between">
+    <header className="bg-[#70966D] shadow-2xl w-screen py-8 flex items-center justify-between font-kalam">
       <div className="flex items-center space-x-2">
         <Image
           src="/logoCC.png"
