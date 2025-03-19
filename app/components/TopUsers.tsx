@@ -16,8 +16,8 @@ export default function TopUsers() {
       if (error) {
         console.error("Error fetching users:", error);
       } 
-      // Kreiramo novi niz korisnika s ispravnim URL-ovima slika
-      const usersWithImages = data.map(user => ({
+      
+      const usersWithImages = data?.map(user => ({
         ...user,
         image: user.image.startsWith("http") ? user.image : getPublicImageUrl(user.image)
       }));
@@ -29,7 +29,7 @@ export default function TopUsers() {
   }, []);
 
   return (
-    <div className="mt-10 mb-10 w-full flex justify-center">
+    <div className="mt-10 mb-10 w-full flex justify-center font-kalam">
       <div className="flex justify-around w-[70%] items-center flex-wrap mb-6">
         {users.map((user, index) => (
           <div key={index} className="flex flex-col items-center space-y-2">

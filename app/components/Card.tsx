@@ -22,8 +22,8 @@ export default function RecipeCard({ post }: RecipeCardProps) {
         />
       </div>
       <div className="p-10 flex flex-col flex-grow">
-        <h2 className="text-xl font-bold mb-2 pt-5">{post.name}</h2>
-        <p className="text-gray-600 text-sm mb-4">
+        <h2 className="text-2xl font-bold mb-4 pt-5 font-kalam text-[#2c3b2ae8]">{post.name}</h2>
+        <p className="text-gray-600 text-m mb-6 font-kalam text-[#2c3b2ae8]">
           {post.ingredients.join(", ")}
         </p>
         <Link

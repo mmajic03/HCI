@@ -50,7 +50,7 @@ export default function PopularRecipes() {
   return (
     <div className="relative flex items-center w-full overflow-hidden">
       <button
-        className="absolute left-0 p-3 bg-white rounded-full w-16 h-16 shadow-md z-10 flex justify-center items-center"
+        className="absolute left-0 p-4 bg-transparent z-10 flex justify-center items-center text-[#2c3b2ae8] text-4xl"
         onClick={prevSlide}
       >
         &#9664;
@@ -63,7 +63,7 @@ export default function PopularRecipes() {
       </div>
 
       <button
-        className="absolute right-0 p-3 bg-white rounded-full w-16 h-16 shadow-md z-10 flex justify-center items-center"
+        className="absolute right-0 p-4 bg-transparent z-10 flex justify-center items-center text-[#2c3b2ae8] text-4xl"
         onClick={nextSlide}
       >
         &#9654;

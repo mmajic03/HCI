@@ -37,11 +37,11 @@ function processPage(page: Page, index: number, pathname: string) {
         className={
           page.path === "/"
             ? pathname === page.path
-              ? "border-2 border-[#20501d] p-2 rounded"
-              : ""
+              ? "border-2 border-[#ffffff] p-2 rounded text-white"
+              : "text-white"
             : pathname.startsWith(page.path)
-            ? "border-2 border-[#275a23] p-2 rounded"
-            : ""
+            ? "border-2 border-[#ffffff] p-2 rounded text-white"
+            : "text-white"
         }
       >
         {page.title}
