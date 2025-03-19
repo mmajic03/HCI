@@ -42,8 +42,8 @@ export default function Filters() {
           </div>
           <div className="flex flex-col max-h-[600px] mt-[50px]">
             <div className="w-full bg-[#E4E0D3] p-6 rounded-lg flex flex-col">
-              <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Meals</h3>
-              <ul className="font-kadwa mb-6">
+              <h3 className="font-kalam font-regular text-xl mb-4 border-b border-black text-[#2c3b2ae8]">Meals</h3>
+              <ul className="font-kalam mb-6 text-[#2c3b2ae8]">
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Breakfast</li>
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Lunch</li>
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Dinner</li>
@@ -52,8 +52,8 @@ export default function Filters() {
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Snacks</li>
               </ul>
 
-              <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Primary ingredient</h3>
-              <ul className="font-kadwa mb-6">
+              <h3 className="font-kalam font-regular text-xl mb-4 border-b border-black text-[#2c3b2ae8]">Primary ingredient</h3>
+              <ul className="font-kalam mb-6 text-[#2c3b2ae8]">
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Meat</li>
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Fish</li>
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Vegetables</li>
@@ -61,8 +61,8 @@ export default function Filters() {
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Pasta</li>
               </ul>
 
-              <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Preparation time</h3>
-              <ul className="font-kadwa mb-6">
+              <h3 className="font-kalam font-regular text-xl mb-4 border-b border-black text-[#2c3b2ae8]">Preparation time</h3>
+              <ul className="font-kalam mb-6 text-[#2c3b2ae8]">
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />&lt; 15 min</li>
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />15 - 45 min</li>
                 <li><input type="checkbox" className="mr-2 accent-[#70966D]" />&gt; 45 min</li>
@@ -75,8 +75,8 @@ export default function Filters() {
       <div className="hidden lg:block w-full">
         <div className="flex flex-row max-h-[600px] mt-[76px]">
           <div className="lg:w-full md:w-1/2 sm:w-full bg-[#E4E0D3] p-6 rounded-lg flex flex-col">
-            <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Meals</h3>
-            <ul className="font-kadwa mb-6">
+            <h3 className="font-kalam font-regular text-xl mb-4 border-b border-black text-[#2c3b2ae8]">Meals</h3>
+            <ul className="font-kalam mb-6 text-[#2c3b2ae8]">
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Breakfast</li>
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Lunch</li>
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Dinner</li>
@@ -85,8 +85,8 @@ export default function Filters() {
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Snacks</li>
             </ul>
 
-            <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Primary ingredient</h3>
-            <ul className="font-kadwa mb-6">
+            <h3 className="font-kalam font-regular text-xl mb-4 border-b border-black text-[#2c3b2ae8]">Primary ingredient</h3>
+            <ul className="font-kalam mb-6 text-[#2c3b2ae8]">
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Meat</li>
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Fish</li>
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Vegetables</li>
@@ -94,8 +94,8 @@ export default function Filters() {
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />Pasta</li>
             </ul>
 
-            <h3 className="font-kadwa font-regular text-xl mb-4 border-b border-black">Preparation time</h3>
-            <ul className="font-kadwa mb-6">
+            <h3 className="font-kalam font-regular text-xl mb-4 border-b border-black text-[#2c3b2ae8]">Preparation time</h3>
+            <ul className="font-kalam mb-6 text-[#2c3b2ae8]">
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />&lt; 15 min</li>
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />15 - 45 min</li>
               <li><input type="checkbox" className="mr-2 accent-[#70966D]" />&gt; 45 min</li>

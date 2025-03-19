@@ -16,27 +16,27 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row md:space-x-8 mb-8 md:mb-0 w-full md:w-auto text-center md:text-left">
           <div className="flex flex-col items-center md:items-start mb-8 md:mb-0 w-full">
-            <h2 className="text-xl font-bold mb-0">Sitemap</h2>
-            <p className="mb-5">Explore our site</p>
+            <h2 className="text-xl font-kalam font-bold mb-2">Sitemap</h2>
+            <p className="mb-5 font-kalam">Explore our site</p>
             <ul className="space-y-2">
-              <li>Home</li>
-              <li>Recipes</li>
-              <li>Inspiration</li>
-              <li>Blog</li>
-              <li>My Profile</li>
+              <li className="font-kalam">Home</li>
+              <li className="font-kalam">Recipes</li>
+              <li className="font-kalam">Inspiration</li>
+              <li className="font-kalam">Blog</li>
+              <li className="font-kalam">My Profile</li>
             </ul>
           </div>
         </div>
 
         <div className="flex flex-col items-center md:items-start mb-8 md:mb-0 w-full md:w-auto">
-          <h2 className="text-xl font-bold mb-4">Contact Us</h2>
-          <p className="mb-2">
+          <h2 className="text-xl font-bold mb-4 font-kalam">Contact Us</h2>
+          <p className="mb-2 font-kalam">
             <span className="font-bold">Phone:</span> +385 123 000
           </p>
-          <p className="mb-4">
+          <p className="mb-4 font-kalam">
             <span className="font-bold">Email:</span> info@coolcook.com
           </p>
-          <h2 className="text-xl font-bold mb-4">Follow Us</h2>
+          <h2 className="text-xl font-bold mb-4 font-kalam">Follow Us</h2>
           <div className="flex space-x-4">
             <div className="transition-opacity">
               <Image 
@@ -70,7 +70,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center mt-12 border-white pt-4">
-        <p className="text-sm">&copy; 2024 CoolCook. All rights reserved.</p>
+        <p className="text-sm font-kalam">&copy; 2024 CoolCook. All rights reserved.</p>
       </div>
     </footer>
   );
