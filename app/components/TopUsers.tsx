@@ -1,35 +1,51 @@
+"use client"; 
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import supabase, { getPublicImageUrl } from "@/src/supabase/supabaseClient";
 
+export default function TopUsers() {
+  const [users, setUsers] = useState([]);
 
-const users = [
-    { name: "Emily", image: "/Emily.jpeg" },
-    { name: "Olivia", image: "/Olivia.jpeg" },
-    { name: "James", image: "/James.jpeg" },
-    { name: "Sophia", image: "/Sophia.jpeg" },
-    { name: "Benjamin", image: "/Benjamin.jpeg" },
-  ];
-  
-  export default function TopUsers() {
-    return (
-      <div className="mt-10 mb-10 w-full flex justify-center">
-        <div className="flex justify-around w-[70%] items-center flex-wrap mb-6">
-          {users.map((user, index) => (
-            <div key={index} className="flex flex-col items-center space-y-2">
-              <div className="h-[120px] w-[120px] rounded-full overflow-hidden">
-                <Image
-                  src={user.image}
-                  alt="user image"
-                  width={56}
-                  height={56}
-                  className="h-full w-full object-cover"
-                  
-                />
-              </div>
-              <span className="text-lg font-semibold">{user.name}</span>
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const { data, error } = await supabase
+        .from("users") 
+        .select("name, image");
+
+      if (error) {
+        console.error("Error fetching users:", error);
+      } 
+      // Kreiramo novi niz korisnika s ispravnim URL-ovima slika
+      const usersWithImages = data.map(user => ({
+        ...user,
+        image: user.image.startsWith("http") ? user.image : getPublicImageUrl(user.image)
+      }));
+
+      setUsers(usersWithImages);
+    };
+
+    fetchUsers();
+  }, []);
+
+  return (
+    <div className="mt-10 mb-10 w-full flex justify-center">
+      <div className="flex justify-around w-[70%] items-center flex-wrap mb-6">
+        {users.map((user, index) => (
+          <div key={index} className="flex flex-col items-center space-y-2">
+            <div className="h-[120px] w-[120px] rounded-full overflow-hidden">
+              <Image
+                src={user.image}
+                alt={`${user.name} image`}
+                width={120}
+                height={120}
+                className="h-full w-full object-cover"
+              />
             </div>
-          ))}
-        </div>
+            <span className="text-lg font-semibold">{user.name}</span>
+          </div>
+        ))}
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
