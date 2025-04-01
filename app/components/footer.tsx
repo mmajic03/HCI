@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa"; 
 
 const Footer = () => {
   return (
@@ -38,33 +39,9 @@ const Footer = () => {
           </p>
           <h2 className="text-xl font-bold mb-4">Follow Us</h2>
           <div className="flex space-x-4">
-            <div className="transition-opacity">
-              <Image 
-                src="/fb.png" 
-                alt="Facebook" 
-                width={24} 
-                height={24} 
-                className="sm:w-8 sm:h-8 md:w-10 md:h-10" 
-              />
-            </div>
-            <div className="transition-opacity">
-              <Image 
-                src="/ig.png" 
-                alt="Instagram" 
-                width={24} 
-                height={24} 
-                className="sm:w-8 sm:h-8 md:w-10 md:h-10" 
-              />
-            </div>
-            <div className="transition-opacity">
-              <Image 
-                src="/yt.png" 
-                alt="YouTube" 
-                width={24} 
-                height={24} 
-                className="sm:w-8 sm:h-8 md:w-10 md:h-10" 
-              />
-            </div>
+          <FaFacebook size={32} className="hover:text-gray-300 transition-opacity" />
+          <FaInstagram size={32} className="text-white hover:text-gray-300 transition-opacity" />
+          <FaYoutube size={32} className="text-white hover:text-gray-300 transition-opacity" />
           </div>
         </div>
       </div>
