@@ -7,10 +7,11 @@ type PagingInfo = {
 };
 
 export type Post = {
-    userId: number;
     id: number;
+    name: string;
     title: string;
     body: string;
+    imageUrl: string;
 };
 
 const PAGE_SIZE = Number(process.env.NEXT_PUBLIC_PAGE_SIZE);

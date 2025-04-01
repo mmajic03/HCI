@@ -3,6 +3,9 @@ import Pagination from './__components/pagination';
 import type { Metadata } from "next";
 import Footer from "../components/footer";
 import Image from "next/image";
+import { FaHeart, FaUser } from "react-icons/fa";
+
+
 
 type BlogPageProps = {
   searchParams: { page: string };
@@ -15,31 +18,34 @@ export const metadata: Metadata = {
 };
 
 function processPost(post: Post) {
-  const { id, title, body, userId } = post;
+  const { id, title, body, name, imageUrl } = post;
 
   return (
     <li key={id} className="mb-8">
-      <div className="flex flex-col md:flex-row bg-[#EDE8DF] rounded-lg shadow-lg overflow-hidden">
-        <div className="w-full md:w-1/2 h-60 md:h-auto">
+      <div className="flex flex-col md:flex-row bg-[#EDE8DF] rounded-lg shadow-lg overflow-hidden relative">
+      <div className="absolute top-5 right-5 text-white text-2xl bg-white border-2 border-[#2c3b2ae8] p-2 rounded-full hover:text-white">
+          <FaHeart className="fill-[#2c3b2ae8] hover:fill-red-500" />
+        </div>
+        <div className="w-full md:w-1/2 h-60 md:h-auto relative">
           <Image
-            src="/mnt/data/image.png"
+            src={imageUrl}
             alt="Blog image"
-            width={500}
-            height={300}
+            layout="fill"
             className="w-full h-auto object-cover"
           />
         </div>
 
         <div className="w-full md:w-1/2 p-6 flex flex-col justify-between">
           <div>
-          <p className="text-l text-gray-500">
-            <span className="font-semibold text-xl">User {userId}</span>
+          <p className="text-l text-gray-500 flex items-center gap-2">
+          <FaUser className="text-gray-500" />
+            <span className=" font-kadwa font-semibold text-xl">{name}</span>
           </p>
-            <h2 className="mt-10 text-4xl font-bold text-gray-900">{title}</h2>
-            <p className="mt-5 text-gray-600 text-2xl">{body.slice(0, 100)}...</p>
+            <h2 className="font-kadwa mt-10 text-4xl font-bold text-[#2c3b2ae8]">{title}</h2>
+            <p className="font-kadwa mt-5 text-[#2c3b2ae8] text-2xl">{body.slice(0, 100)}...</p>
           </div>
           <hr className=" mt-[120px] border-t border-gray-400"/>
-          <div className="flex justify-between items-center mb-7 text-gray-500 text-xl">
+          <div className="font-kadwa flex justify-between items-center mb-7 text-gray-500 text-xl">
             <span>1,162 views • 4 comments</span>
           </div>
         </div>

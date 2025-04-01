@@ -1,182 +1,65 @@
 [
     {
-        "userId": 1,
         "id": 1,
+        "name": "John Smith",
         "title": "The Art of Perfect Soups",
-        "body": "Learn how to create rich, flavorful soups with the perfect balance of ingredients and seasonings."
+        "body": "Learn how to prepare rich, delicious soups with the perfect balance of ingredients and spices.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/The-Ultimate-Chicken-Noodle-Soup_EXPS_FT24_192832_JR_0208_9.jpg?fit=700,700"
     },
     {
-        "userId": 2,
         "id": 2,
+        "name": "Emily Johnson",
         "title": "Grilling Tips for Beginners",
-        "body": "Master the art of grilling with essential tips on fire control, timing, and choosing the best cuts of meat."
+        "body": "Master the art of grilling with essential tips on fire control, cooking time, and selecting the best cuts of meat.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2024/11/Grilled-Cheeseburgers_EXPS_FT24_277103_EC_1101_1.jpg?fit=300,300&webp=1"
     },
     {
-        "userId": 3,
         "id": 3,
+        "name": "Jessica Williams",
         "title": "Delicious Smoothie Recipes",
-        "body": "Easy and tasty smoothie recipes to give you a refreshing and healthy start to your day."
+        "body": "Simple and tasty smoothie recipes that will provide you with a refreshing and healthy start to your day.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2023/04/Spinach-Smoothie_EXPS_FT23_273350_ST_3_23_1.jpg?fit=300,300&webp=1"
     },
     {
-        "userId": 4,
         "id": 4,
-        "title": "Making the Best Homemade Pancakes",
-        "body": "Step-by-step guide on preparing fluffy and delicious pancakes, from batter to toppings."
+        "name": "Michael Brown",
+        "title": "Making Homemade Pancakes",
+        "body": "A step-by-step guide to making fluffy and delicious pancakes, from batter to filling.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2025/02/Danish-Pancakes_EXPS_TOHD24_44542_OrlyCatz_8.jpg?fit=300,300&webp=1"
     },
     {
-        "userId": 5,
         "id": 5,
-        "title": "Spices You Should Always Have in Your Kitchen",
-        "body": "Essential spices that will elevate your cooking and bring out the best in your meals."
+        "name": "David Miller",
+        "title": "Essential Spices You Should Always Have in Your Kitchen",
+        "body": "Essential spices that will enhance your cooking and bring out the best flavors in your dishes.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2023/10/GettyImages-1154618104-spices-and-herbs-FT-JVedit.jpg?fit=700%2C467"
     },
     {
-        "userId": 6,
         "id": 6,
-        "title": "15-Minute Dinners for Busy Weeknights",
-        "body": "Quick and easy dinner ideas you can prepare in under 15 minutes, without sacrificing taste."
+        "name": "Sarah Davis",
+        "title": "15-Minute Dinners for Busy Evenings",
+        "body": "Quick and easy dinner ideas that you can prepare in under 15 minutes without compromising on taste.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Blackened-Tilapia-with-Zucchini-Noodles_EXPS_TOHAM23_200349_P2_MD_11_04_7b.jpg?fit=700,700"
     },
     {
-        "userId": 7,
         "id": 7,
-        "title": "Perfecting the Art of Stir-Frying",
-        "body": "How to master stir-frying with a few simple techniques and tips to make your meals taste restaurant-quality."
+        "name": "James Wilson",
+        "title": "Mastering the Art of Stir-Fry",
+        "body": "Learn how to perfect the stir-fry technique with simple tricks and tips to achieve restaurant-quality flavors.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/exps8363_TH2499C10A.jpg?fit=300,300&webp=1"
     },
     {
-        "userId": 8,
         "id": 8,
+        "name": "Olivia Martinez",
         "title": "Baking Without Sugar: The Best Alternatives",
-        "body": "Explore healthier sugar substitutes for your baking recipes, and create guilt-free treats everyone will love."
+        "body": "Discover healthier substitutes for sugar in your baking recipes and create guilt-free treats everyone will love.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/0001/01/Chia-Seed-Protein-Bites-_EXPS_THFM19_227074_B09_26_4b.jpg?fit=700,700"
     },
     {
-        "userId": 9,
         "id": 9,
+        "name": "William Anderson",
         "title": "The Ultimate Guide to Freezing Food",
-        "body": "Tips on how to freeze food properly to maintain its freshness and nutritional value."
-    },
-    {
-        "userId": 10,
-        "id": 10,
-        "title": "Global Breakfasts to Try at Home",
-        "body": "A collection of unique breakfast recipes from around the world to spice up your morning routine."
-    },
-    {
-        "userId": 11,
-        "id": 11,
-        "title": "Vegan Dishes That Even Meat Lovers Will Enjoy",
-        "body": "Delicious vegan recipes that are so flavorful, even meat lovers won't miss the meat."
-    },
-    {
-        "userId": 12,
-        "id": 12,
-        "title": "Cooking with Fresh Herbs",
-        "body": "How to use fresh herbs in your cooking for bold and aromatic flavors that make any dish stand out."
-    },
-    {
-        "userId": 13,
-        "id": 13,
-        "title": "Mastering the Art of Baking Cakes",
-        "body": "Tips and techniques for baking perfect cakes every time, from flavor to frosting."
-    },
-    {
-        "userId": 14,
-        "id": 14,
-        "title": "How to Make Homemade Pasta from Scratch",
-        "body": "A step-by-step guide to creating fresh, homemade pasta that rivals your favorite Italian restaurant."
-    },
-    {
-        "userId": 15,
-        "id": 15,
-        "title": "Clever Ways to Use Leftovers",
-        "body": "Turn your leftovers into new, exciting meals with these creative ideas and recipes."
-    },
-    {
-        "userId": 16,
-        "id": 16,
-        "title": "Baking the Perfect Pizza Crust",
-        "body": "Learn how to make a crispy, chewy pizza crust that will impress your guests."
-    },
-    {
-        "userId": 17,
-        "id": 17,
-        "title": "Comforting Soups for Cold Weather",
-        "body": "Perfectly warm soups to cozy up to on a chilly day, with comforting flavors that warm you from the inside out."
-    },
-    {
-        "userId": 18,
-        "id": 18,
-        "title": "Creative Salad Recipes for Every Season",
-        "body": "Fresh and vibrant salad recipes to enjoy year-round, with seasonal ingredients that make each dish unique."
-    },
-    {
-        "userId": 19,
-        "id": 19,
-        "title": "Healthy and Hearty Vegan Soups",
-        "body": "Wholesome and nutritious vegan soups that will keep you full and satisfied all day long."
-    },
-    {
-        "userId": 20,
-        "id": 20,
-        "title": "Low-Carb Meal Ideas for Busy People",
-        "body": "Quick and easy low-carb meals that are perfect for those on the go and looking to maintain a healthy lifestyle."
-    },
-    {
-        "userId": 21,
-        "id": 21,
-        "title": "How to Cook Fish Perfectly Every Time",
-        "body": "Master the art of cooking fish with these simple tips to ensure it turns out tender and flavorful every time."
-    },
-    {
-        "userId": 22,
-        "id": 22,
-        "title": "Sweet and Savory Breakfast Ideas",
-        "body": "Explore both sweet and savory options for breakfast to keep your mornings exciting and satisfying."
-    },
-    {
-        "userId": 23,
-        "id": 23,
-        "title": "A Guide to Cooking with Wine",
-        "body": "Learn how to incorporate wine into your cooking for added depth and flavor in your dishes."
-    },
-    {
-        "userId": 24,
-        "id": 24,
-        "title": "How to Make a Perfect Omelette",
-        "body": "Tips for making the fluffiest, most delicious omelette that will impress anyone at your breakfast table."
-    },
-    {
-        "userId": 25,
-        "id": 25,
-        "title": "The Best Way to Prepare Vegetables",
-        "body": "How to prepare vegetables in the best way to preserve their nutrients and bring out their natural flavors."
-    },
-    {
-        "userId": 26,
-        "id": 26,
-        "title": "The Ultimate Guide to Gravy",
-        "body": "Perfectly rich and smooth gravy recipes that will complement your dishes and elevate any meal."
-    },
-    {
-        "userId": 27,
-        "id": 27,
-        "title": "Impressive Dishes for Dinner Parties",
-        "body": "Wow your guests with these elegant and delicious dinner party recipes, perfect for any occasion."
-    },
-    {
-        "userId": 28,
-        "id": 28,
-        "title": "Making Your Own Spice Blends",
-        "body": "Create unique, custom spice blends to elevate your cooking and impress your family and friends."
-    },
-    {
-        "userId": 29,
-        "id": 29,
-        "title": "Easy Appetizers for Every Occasion",
-        "body": "Quick and simple appetizer recipes for any gathering or event that are sure to be crowd-pleasers."
-    },
-    {
-        "userId": 30,
-        "id": 30,
-        "title": "Guilt-Free Comfort Food Recipes",
-        "body": "Delicious comfort food recipes that are healthier but still rich in flavor and satisfaction."
+        "body": "Tips on how to properly freeze food to preserve its freshness and nutritional value.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2024/03/Close-up-of-frozen-vegetables-GettyImages-488875558.jpg?fit=300,300&webp=1"
     }
 ]
