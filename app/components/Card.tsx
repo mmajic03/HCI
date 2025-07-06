@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RecipePost } from "./recipeCard"; 
+import { RecipePost } from "../types";
 import Image from "next/image";
 
 type RecipeCardProps = {

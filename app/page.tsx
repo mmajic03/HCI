@@ -1,45 +1,114 @@
-import Card from "./components/recipeCard";
+"use client";
+
+import { useEffect, useState } from "react";
 import Footer from "./components/footer";
+import Filter from "./components/Filter";
 import PopularRecipes from "./components/PopularRecipes";
-import TopUsers from "./components/TopUsers";
-import Filters from "./components/Filters";
+import RecommendedRecipes from "./components/RecommendedRecipes";
+import { RecipePost } from "./types";
+import Loading from "./loading";
+import MainSection from "./components/MainSection";
 
 export default function Home() {
+  const [posts, setPosts] = useState<RecipePost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [mealTypes, setMealTypes] = useState<string[]>([]);
+  const [prepTimes, setPrepTimes] = useState<string[]>([]);
+  const [cuisines, setCuisines] = useState<string[]>([]);
+  const [difficulties, setDifficulties] = useState<string[]>([]);
+  const [visibleCount, setVisibleCount] = useState(9);
+
+  const mealTypeOptions = ["Breakfast", "Lunch", "Dinner", "Dessert", "Snack"];
+  const prepTimeOptions = ["≤15", "≤30", ">30"];
+  const cuisineOptions = ["Italian", "Mexican", "Indian", "American", "Greek", "Japanese"];
+  const difficultyOptions = ["Easy", "Medium", "Hard"];
+
+  useEffect(() => {
+    async function fetchRecipes() {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes`, {
+          cache: "no-store",
+        });
+        const data = await response.json();
+        setPosts(data.recipes);
+      } catch (error) {
+        console.error("Error fetching recipes:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchRecipes();
+  }, []);
+
+  if (isLoading) return <Loading />;
+
+  const toggleItem = (arr: string[], item: string) =>
+    arr.includes(item) ? arr.filter((x) => x !== item) : [...arr, item];
+
+  const filteredPosts = posts.filter((post) => {
+    const mealMatch = mealTypes.length === 0 || mealTypes.some((mt) => post.mealType.includes(mt));
+    const prepMatch =
+      prepTimes.length === 0 ||
+      prepTimes.some((pt) =>
+        pt === "≤15"
+          ? post.prepTimeMinutes <= 15
+          : pt === "≤30"
+          ? post.prepTimeMinutes <= 30
+          : pt === ">30"
+          ? post.prepTimeMinutes > 30
+          : false
+      );
+    const cuisineMatch = cuisines.length === 0 || cuisines.includes(post.cuisine);
+    const difficultyMatch = difficulties.length === 0 || difficulties.includes(post.difficulty);
+    return mealMatch && prepMatch && cuisineMatch && difficultyMatch;
+  });
+
+  const visiblePosts = filteredPosts.slice(0, visibleCount);
+
   return (
-    <main className="flex flex-col min-h-screen w-full items-center p-10 bg-[#9c8d71d7]">
-      <div className="bg-[url('/header_image.jpg')] bg-cover bg-center h-[70vh] w-screen mt-4">
-        <div className="bg-[#E4E0D3] h-[50%] w-[90%] sm:w-[70%] md:w-[50%] lg:w-[30%] mt-[100px] ml-4 sm:ml-6 md:ml-12 p-4 sm:p-6  flex flex-col items-start justify-around">
-          <h2 className="font-kalam font-bold text-4xl text-[#2c3b2ae8] sm:text-2xl lg:text-3xl mb-0 break-words">
-            Simple ingredients, endless possibilities...
-          </h2>
-          <p className="text-[#2c3b2ae8] font-kalam text-sm sm:text-sm lg:text-base break-words overflow-hidden -mt-[60px]">
-            Welcome to CoolCook, where simple ingredients turn into extraordinary meals. Unleash your creativity and make every dish unforgettable.
-          </p>
+    <>
+      <main className="flex flex-col min-h-screen w-full items-center p-10 pt-0 bg-[#9c8d71d7]">
+        <MainSection />
+        <div className="flex flex-col mt-[-30px] font-kalam lg:flex-row lg:gap-10 w-full mb-5">
+          <Filter
+            mealTypeOptions={mealTypeOptions}
+            prepTimeOptions={prepTimeOptions}
+            cuisineOptions={cuisineOptions}
+            difficultyOptions={difficultyOptions}
+            mealTypes={mealTypes}
+            setMealTypes={setMealTypes}
+            prepTimes={prepTimes}
+            setPrepTimes={setPrepTimes}
+            cuisines={cuisines}
+            setCuisines={setCuisines}
+            difficulties={difficulties}
+            setDifficulties={setDifficulties}
+            toggleItem={toggleItem}
+          />
+
+          <RecommendedRecipes
+            filteredPosts={filteredPosts}
+            visiblePosts={visiblePosts}
+            visibleCount={visibleCount}
+            setVisibleCount={setVisibleCount}
+          />
         </div>
-      </div>
-
-      <div className="mt-1 flex flex-col lg:flex-row lg:gap-10 w-full">
-        <Filters />
-        <div className="flex-1">
-        <h2 className="text-4xl font-kalam text-[#2c3b2ae8] text-center mb-8 mt-[20px] sm:mt-12 md:mt-16 lg:mt-[76px] w-full">Recommended recipes</h2>
-        <div className="border-b border-[#2c3b2ae8] w-full mb-10"></div>
-          <div>
-            <Card></Card>
-          </div>
+        <h2 className="text-3xl font-kalam text-[#2c3b2ae8] mb-2 mt-[30px] md:mt-[120px] w-full text-center lg:text-left">
+          Popular recipes
+        </h2>
+        <div className="border-b border-[#2c3b2ae8] w-full"></div>
+        <div className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 w-screen p-6 rounded-lg h-auto sm:h-[250px] justify-center items-center gap-6 overflow-x-auto mb-1 text-center lg:text-left">
+          <PopularRecipes />
         </div>
-      </div>
-
-      <h2 className="text-4xl font-kalam text-[#2c3b2ae8] text-center mt-[150px]">Popular recipes</h2>
-      <div className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 mt-5 w-screen bg-[#70966D] p-6 rounded-lg h-auto sm:h-[250px] justify-center items-center gap-6 overflow-x-auto">
-        <PopularRecipes />
-      </div>
-
-
-      <h2 className="text-4xl font-kalam text-[#2c3b2ae8] text-center mt-[60px] mb-5">Top users</h2>
-      <div className="border-b border-[#2c3b2ae8] w-full mb-7"></div>
-      <TopUsers/>
-
+        <h2 className="text-3xl font-kalam text-[#2c3b2ae8] mb-2 mt-3 md:mt-[70px] w-full text-center lg:text-left">Top users</h2>
+        <div className="border-b border-[#2c3b2ae8] w-full"></div>
+        <div className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 w-screen p-6 rounded-lg h-auto sm:h-[250px] justify-center items-center gap-6 overflow-x-auto mb-8 text-center lg:text-left">
+          {/* Top users komponenta */}
+        </div>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

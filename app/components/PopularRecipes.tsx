@@ -1,73 +1,66 @@
-'use client';
-import { useState, useEffect } from 'react';
+"use client";
+
+import { useEffect, useState } from "react";
+import { RecipePost } from "../types";
+import Link from "next/link";
+import Image from "next/image";
+import Loading from "../loading";
 
 export default function PopularRecipes() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(4); 
-
-  const numItems = 10;
-
-  const updateItemsPerView = () => {
-    if (window.innerWidth < 640) {
-      setItemsPerView(1); 
-    } else if (window.innerWidth < 1024) {
-      setItemsPerView(2);
-    } else {
-      setItemsPerView(4);
-    }
-  };
+  const [posts, setPosts] = useState<RecipePost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    updateItemsPerView(); 
-    window.addEventListener('resize', updateItemsPerView); 
-    return () => window.removeEventListener('resize', updateItemsPerView); 
+    async function fetchRecipes() {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes`, {
+          cache: "no-store",
+        });
+        const data = await response.json();
+        setPosts(data.recipes);
+      } catch (error) {
+        console.error("Error fetching popular recipes:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchRecipes();
   }, []);
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? numItems - 1 : prevIndex - 1
-    );
-  };
+  if (loading) {
+    return <Loading />;
+  }
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === numItems - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const processItem = (index: number) => {
-    const adjustedIndex = (index + numItems) % numItems;
-    return (
-      <div
-        key={adjustedIndex}
-        className="bg-white rounded-lg shadow-lg w-[150px] h-[150px] flex items-center justify-center"
-      >
-        <p className="text-gray-500">{adjustedIndex + 1}</p>
-      </div>
-    );
-  };
+  const popularSorted = posts
+    .filter(post => post.rating !== undefined)
+    .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
+    .slice(0, 6);
 
   return (
-    <div className="relative flex items-center w-full overflow-hidden">
-      <button
-        className="absolute left-0 p-4 bg-transparent z-10 flex justify-center items-center text-[#2c3b2ae8] text-4xl"
-        onClick={prevSlide}
-      >
-        &#9664;
-      </button>
-
-      <div className="flex overflow-hidden w-full justify-center gap-4">
-        {Array.from({ length: itemsPerView }).map((_, index) =>
-          processItem(currentIndex + index)
-        )}
-      </div>
-
-      <button
-        className="absolute right-0 p-4 bg-transparent z-10 flex justify-center items-center text-[#2c3b2ae8] text-4xl"
-        onClick={nextSlide}
-      >
-        &#9654;
-      </button>
+    <div
+      className="w-full flex flex-col sm:flex-row sm:flex-nowrap justify-around gap-4 sm:gap-2 overflow-x-auto"
+    >
+      {popularSorted.map((post) => (
+        <div
+          key={post.id}
+          className="flex-shrink-0 w-full sm:w-[260px] rounded-lg overflow-hidden shadow-md bg-white flex flex-col relative"
+        >
+          <Image
+            src={post.image}
+            alt={post.name}
+            width={500}
+            height={300}
+            className="w-full h-44 object-cover rounded-lg"
+            style={{ filter: "blur(1px)" }}
+          />
+          <Link
+            href={`/home/${post.id}`}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#70966D] text-white py-4 px-3 rounded hover:bg-[#496047] transition font-semibold"
+          >
+            Read more
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }
