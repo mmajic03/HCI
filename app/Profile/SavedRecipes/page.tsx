@@ -55,7 +55,7 @@ export default function SavedRecipes() {
         setFavoriteIds(favIds);
       } catch (e) {
         console.error(e);
-        setError("Greška pri učitavanju favorita");
+        setError("Error loading favorites");
       } finally {
         setLoading(false);
       }
@@ -89,20 +89,27 @@ export default function SavedRecipes() {
         const newRecipe = await res.json();
         setSaved((s) => [...s, newRecipe]);
       } catch {
-        console.error("Neuspješno dohvaćanje novog recepta");
+        console.error("Failed to fetch new recipe");
       }
     }
   };
 
   if (loading) return <Loading />;
   if (error) return <p className="text-red-700">{error}</p>;
-  if (!saved.length) return <p className="text-center mt-10">Još nema spremljenih recepata.</p>;
+  if (!saved.length) return (
+    <div className="flex flex-col items-center justify-center min-h-[50vh]">
+      <p className="text-center text-3xl font-bold text-[#496047]">
+        No saved recipes yet.
+      </p>
+    </div>
+  );
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-5">
       <div className="w-full mb-6 text-left pl-2">
         <h1 className="text-3xl font-bold text-[#2a4428]">
-          Saved Recipes <span className="text-[#555a55] text-lg">({saved.length})</span>
+          Saved Recipes{" "}
+          <span className="text-[#555a55] text-lg">({saved.length})</span>
         </h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 w-full">
