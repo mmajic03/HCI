@@ -1,87 +1,99 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const FilterBar = () => {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+type FilterBarProps = {
+  onFilterChange: (filters: {
+    mealType: string;
+    minCalories: number | null;
+    selectedIngredient: string;
+    ingredientsSearch: string;
+  }) => void;
+};
 
+const allIngredients = [
+  "egg",
+  "sugar",
+  "salt",
+  "butter",
+  "milk",
+  "cheese",
+  "flour",
+  "olive oil",
+  "cinnamon",
+  "vanilla extract",
+  "tomato",
+  "onion",
+  "garlic"
+];
 
-  const updateFilters = (value: string) => {
-    if (value !== "default" && !selectedFilters.includes(value)) {
-      setSelectedFilters([...selectedFilters, value]);
-    }
-  };
-  
+const mealTypeOptions = [
+  "Breakfast",
+  "Lunch",
+  "Dinner",
+  "Snack",
+  "Dessert",
+  "Brunch"
+];
 
-  const removeFilter = (filter: string) => {
-    setSelectedFilters(selectedFilters.filter(f => f !== filter));
-  };
+const FilterBar = ({ onFilterChange }: FilterBarProps) => {
+  const [mealType, setMealType] = useState("default");
+  const [minCalories, setMinCalories] = useState("default");
+  const [selectedIngredient, setSelectedIngredient] = useState("default");
+  const [ingredientsSearch, setIngredientsSearch] = useState("");
 
+  useEffect(() => {
+    onFilterChange({
+      mealType: mealType === "default" ? "" : mealType,
+      minCalories: minCalories === "default" ? null : Number(minCalories),
+      selectedIngredient: selectedIngredient === "default" ? "" : selectedIngredient,
+      ingredientsSearch,
+    });
+  }, [mealType, minCalories, selectedIngredient, ingredientsSearch, onFilterChange]);
 
   return (
     <div className="bg-[#E4E0D3] p-4 rounded-lg w-full mb-6">
       <div className="flex flex-wrap lg:flex-nowrap items-start lg:items-center gap-4">
         <select
           className="p-2 bg-[#E5E1CE] rounded border border-black text-sm flex-grow lg:flex-grow-0"
-          defaultValue="default"
-          onChange={e => updateFilters(e.target.value)}
+          value={mealType}
+          onChange={(e) => setMealType(e.target.value)}
         >
-          <option value="default" disabled>Categories</option>
-          <option value="Quick meals">Quick meals</option>
-          <option value="Healthy meals">Healthy meals</option>
-          <option value="Budget recipes">Budget recipes</option>
-          <option value="Seasonal recipes">Seasonal recipes</option>
+          <option value="default" disabled>Meal Type</option>
+          {mealTypeOptions.map((type) => (
+            <option key={type} value={type}>{type}</option>
+          ))}
         </select>
-
-
         <select
           className="p-2 bg-[#E5E1CE] rounded border border-black text-sm flex-grow lg:flex-grow-0"
-          defaultValue="default"
-          onChange={e => updateFilters(e.target.value)}
+          value={minCalories}
+          onChange={(e) => setMinCalories(e.target.value)}
         >
-          <option value="default" disabled>Filter by</option>
-          <option value="Ingredients">Ingredients</option>
-          <option value="Nutritional values">Nutritional values</option>
-          <option value="Preparation method">Preparation method</option>
+          <option value="default" disabled>Calories</option>
+          <option value="400">400+</option>
+          <option value="300">300+</option>
+          <option value="200">200+</option>
+          <option value="100">100+</option>
         </select>
-
-
         <select
           className="p-2 bg-[#E5E1CE] rounded border border-black text-sm flex-grow lg:flex-grow-0"
-          defaultValue="default"
-          onChange={e => updateFilters(e.target.value)}
+          value={selectedIngredient}
+          onChange={(e) => setSelectedIngredient(e.target.value)}
         >
-          <option value="default" disabled>Diet Type</option>
-          <option value="Gluten-free">Gluten-free</option>
-          <option value="Lactose-free">Lactose-free</option>
-          <option value="Vegan">Vegan</option>
-          <option value="Pescatarian">Pescatarian</option>
-          <option value="High-protein">High-protein</option>
-          <option value="Keto">Keto</option>
-          <option value="Vegetarian">Vegetarian</option>
+          <option value="default" disabled>Ingredient</option>
+          {allIngredients.map((ingredient) => (
+            <option key={ingredient} value={ingredient}>
+              {ingredient}
+            </option>
+          ))}
         </select>
-
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search ingredients..."
+          value={ingredientsSearch}
+          onChange={(e) => setIngredientsSearch(e.target.value)}
           className="p-3 bg-[#E5E1CE] rounded border border-black text-sm w-60 ml-auto"
         />
       </div>
-
-      {selectedFilters.length > 0 && (
-        <div className="mt-4 flex gap-2">
-          {selectedFilters.map((filter, index) => (
-            <div key={index} className="bg-[#70966D] text-white px-4 py-1 rounded-full flex items-center">
-              <span>{filter}</span>
-              <button
-                onClick={() => removeFilter(filter)}
-                className="ml-2 text-sm font-bold"
-              >
-                x
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

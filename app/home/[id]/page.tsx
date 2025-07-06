@@ -1,51 +1,136 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { RecipePost } from "../../components/recipeCard";
+import { useParams } from "next/navigation";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { RecipePost } from "@/app/types";
+import Loading from "@/app/loading";
 
-type PageProps = {
-  params: {
-    id: string;
+const getSessionFavs = (): number[] =>
+  JSON.parse(sessionStorage.getItem("favoriteIds") || "[]");
+
+const storeSessionFavs = (ids: number[]) =>
+  sessionStorage.setItem("favoriteIds", JSON.stringify(ids));
+
+export default function HomePage() {
+  const { id } = useParams() as { id: string };
+  const recipeId = Number(id);
+
+  const [recipePost, setRecipePost] = useState<RecipePost | null>(null);
+  const [favoriteIds, setFavoriteIds] = useState<number[]>(() =>
+    typeof window === "undefined" ? [] : getSessionFavs()
+  );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const onStorage = (e: StorageEvent) => {
+      if (e.key === "favoriteIds") {
+        setFavoriteIds(e.newValue ? JSON.parse(e.newValue) : []);
+      }
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [recipeRes, favRes] = await Promise.all([
+          fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes/${id}`),
+          fetch("/api/favorites"),
+        ]);
+
+        const recipeData: RecipePost = await recipeRes.json();
+        const { favorites }: { favorites: number[] } = await favRes.json();
+
+        if (favorites?.length) {
+          storeSessionFavs(favorites);
+          setFavoriteIds(favorites);
+        }
+
+        setRecipePost(recipeData);
+      } catch (err) {
+        console.error("Error loading data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  const toggleFavorite = async () => {
+    const isFav = favoriteIds.includes(recipeId);
+    const method = isFav ? "DELETE" : "POST";
+
+    await fetch("/api/favorites", {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: recipeId }),
+    });
+
+    const updated = isFav
+      ? favoriteIds.filter((x) => x !== recipeId)
+      : [...favoriteIds, recipeId];
+
+    setFavoriteIds(updated);
+    storeSessionFavs(updated);
   };
-};
 
-async function getRecipePost(id: string): Promise<RecipePost> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes/${id}`);
-  const data = response.json();
-  return data;
-}
+  if (loading || !recipePost) return <Loading />;
 
-export default async function HomePage({ params }: PageProps) {
-  const recipePost = await getRecipePost(params.id);
-  
+  const isFav = favoriteIds.includes(recipeId);
+
   return (
-    <>    
-      <div className="bg-[#A3967C] min-h-screen flex items-center justify-center">
-        <div className="w-11/12 max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">{recipePost.name}</h1>
-          <Image
-            src={recipePost.image}
-            alt={recipePost.name}
-            width={500} 
-            height={200}
-            className="w-full h-67 object-contain rounded-t-lg"
-          />
-          <div className="p-6">
-            <div className="mt-4 text-grey-800">
-              <span className="font-semibold text-black">Ingredients:</span>
-              <ul className="mt-4 list-disc list-inside text-gray-700 space-y-2">
-                {recipePost.ingredients.map((ingredient, index) => (
-                  <li key={index} className="list-none">{ingredient}</li>
-                ))}
-              </ul>
-            </div>
-          <h2 className="mt-6 text-xl font-semibold text-black">Instructions</h2>
-          <ol className="mt-4 list-decimal list-inside text-gray-700 space-y-2">
-            {recipePost.instructions.map((instruction, index) => (
-              <li key={index}>{instruction}</li>
-            ))}
-          </ol>
+    <div className="bg-[#A3967C] min-h-screen flex items-center justify-center">
+      <div className="max-w-5xl w-11/12 bg-white shadow-md rounded-lg p-6 relative my-8">
+        <button
+          onClick={toggleFavorite}
+          aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+          className="absolute top-5 right-5 text-2xl bg-white border-2 border-black p-2 rounded-full cursor-pointer transition hover:scale-110"
+        >
+          {isFav ? (
+            <FaHeart className="fill-red-500" />
+          ) : (
+            <FaRegHeart className="fill-black hover:fill-red-500" />
+          )}
+        </button>
+
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+          {recipePost.name}
+        </h1>
+
+        <div className="flex flex-col md:flex-row md:space-x-8">
+          <div className="md:w-1/2 flex justify-center">
+            <Image
+              src={recipePost.image}
+              alt={recipePost.name}
+              width={350}
+              height={350}
+              className="object-contain rounded-lg max-h-[400px]"
+            />
+          </div>
+
+          <div className="md:w-1/2 mt-6 md:mt-0">
+            <span className="font-semibold text-black text-lg">
+              Ingredients:
+            </span>
+            <ul className="mt-4 list-disc list-inside text-gray-700 space-y-2">
+              {recipePost.ingredients.map((ing, i) => (
+                <li key={i}>{ing}</li>
+              ))}
+            </ul>
+
+            <h2 className="mt-6 text-xl font-semibold text-black">Instructions</h2>
+            <ol className="mt-4 list-decimal list-inside text-gray-700 space-y-2">
+              {recipePost.instructions.map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

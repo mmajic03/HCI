@@ -1,214 +1,96 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import supabase, { uploadImage, getPublicImageUrl, saveImageUrlToDatabase } from "@/src/supabase/supabaseClient";
+import { Navigation } from "./_components/navigation";
+import Image from "next/image";
+import ShoppingList from "./ShoppingList/page";
+import SavedRecipes from "./SavedRecipes/page";
 
-export default function SignUp() {
-  const router = useRouter();
-
-  const [formData, setFormData] = useState<{
-    name: string;
-    email: string;
-    password: string;
-    profilePicture: File | null;
-  }>({
-    name: "",
-    email: "",
-    password: "",
-    profilePicture: null,
-  });
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.type === "file") {
-      const file = e.target.files?.[0] || null;
-      setFormData({ ...formData, profilePicture: file });
-      if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          setImagePreview(reader.result as string);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        setImagePreview(null);
-      }
-    } else {
-      setFormData({ ...formData, [e.target.id]: e.target.value });
-    }
-  };
-
-  const resetForm = () => {
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      profilePicture: null,
-    });
-    setImagePreview(null);
-    
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    const { name, email, password, profilePicture } = formData;
-
-    const { data: user, error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    if (authError) {
-      setError(authError.message);
-      setLoading(false);
-      return;
-    }
-
-    const userId = user.user?.id;
-
-  
-    const { error: dbError } = await supabase.from("users").insert([
-      { 
-        id: userId, 
-        name, 
-        email, 
-        password, 
-        email_verified: false 
-      },
-    ]);
-
-    if (dbError) {
-      setError("Failed to save user info: " + dbError.message);
-      setLoading(false);
-      return;
-    }
-
-    
-    if (profilePicture && userId) {
-      try {
-        const imagePath = await uploadImage(profilePicture);
-        if (imagePath) {
-          const publicUrl = getPublicImageUrl(imagePath);
-          await saveImageUrlToDatabase(userId, publicUrl);
-        }
-      } catch (uploadError) {
-        setError("Failed to upload profile picture");
-        setLoading(false);
-        return;
-      }
-    }
-
-    resetForm();
-    setLoading(false);
-    router.push("/Profile");
-  };
+const ProfilePage = () => {
+  const [activeTab, setActiveTab] = useState("profile");
 
   return (
-    <main className="flex min-h-[822px] w-screen flex-col items-center p-10 bg-[#9C8D71E8]">
-      <div className="bg-[#EDE8DF] w-full max-w-md p-10 mt-[100px] rounded-lg shadow-md">
-        <h1 className="text-center text-[#537944] text-2xl font-bold mb-6">Sign Up</h1>
+    <div className="h-full min-h-screen bg-[#A48F73] flex">
+      <main className="w-full bg-[#EDE8DF] p-8 rounded-none shadow-lg flex">
+        <aside className="w-1/6 border-r border-gray-400 pr-4 text-xl mt-2">
+          <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        </aside>
 
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-
-        <form onSubmit={handleSubmit}>
-         
-         
-
-         
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#9C8D71]"
-              placeholder="Name"
-              required
-            />
-          </div>
-
-          
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#9C8D71]"
-              placeholder="Email"
-              required
-            />
-          </div>
-
-        
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Create password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#9C8D71]"
-              placeholder="Create password"
-              required
-            />
-          </div>
-
-          <div className="mb-4 flex flex-col items-center">
-            <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200 mb-2 flex items-center justify-center">
-              {imagePreview ? (
-                <img
-                  src={imagePreview}
-                  alt="Profile preview"
-                  className="w-full h-full object-cover"
+        <section className="w-5/6 pl-8">
+          {activeTab === "profile" && (
+            <>
+              <div className="flex items-center space-x-4 mb-8 mt-4">
+                <Image
+                  alt="Profile"
+                  src="/image.jpg"
+                  className="w-32 h-32 rounded-full object-cover border-2 border-gray-400"
+                  width={96}
+                  height={96}
                 />
-              ) : (
-                <span className="text-gray-500">No image</span>
-              )}
+                <div>
+                  <h2 className="text-2xl text-gray-800 border-gray-400 pb-1">Emily Brown</h2>
+                  <button className="mt-2 px-4 py-1.5 bg-[#70966D] text-black rounded-lg shadow hover:bg-[#467242] focus:outline-none focus:ring-2 focus:ring-[#70966D] text-sm">
+                    Change photo
+                  </button>
+                </div>
+              </div>
+
+              <form className="space-y-6 mt-2">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="firstName" className="block text-gray-800 font-medium mb-2">First name</label>
+                    <input type="text" id="firstName" className="w-full border border-gray-400 rounded-lg px-4 py-2 bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-[#70966D] mt-2" />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-gray-800 font-medium mb-2">Last name</label>
+                    <input type="text" id="lastName" className="w-full border border-gray-400 rounded-lg px-4 py-2 bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-[#70966D] mt-2" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="username" className="block text-gray-800 font-medium mb-2">Username</label>
+                    <input type="text" id="username" className="w-full border border-gray-400 rounded-lg px-4 py-2 bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-[#70966D] mt-2" />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-gray-800 font-medium mb-2">Email</label>
+                    <input type="email" id="email" className="w-full border border-gray-400 rounded-lg px-4 py-2 bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-[#70966D] mt-2" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="password" className="block text-gray-800 font-medium mb-2">Password</label>
+                    <input type="password" id="password" className="w-full border border-gray-400 rounded-lg px-4 py-2 bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-[#70966D] mt-2" />
+                  </div>
+                  <div>
+                    <label htmlFor="confirmPassword" className="block text-gray-800 font-medium mb-2">Confirm password</label>
+                    <input type="password" id="confirmPassword" className="w-full border border-gray-400 rounded-lg px-4 py-2 bg-[#f8f4ed] focus:outline-none focus:ring-2 focus:ring-[#70966D] mt-2" />
+                  </div>
+                </div>
+
+                <button type="submit" className="mt-6 px-3 py-2 bg-[#70966D] text-black rounded-lg shadow hover:bg-[#467242] focus:outline-none focus:ring-2 focus:ring-[#70966D]">
+                  Save Changes
+                </button>
+              </form>
+            </>
+          )}
+
+          {activeTab === "savedRecipes" && (
+            <div className="mt-6">
+              <SavedRecipes />
             </div>
-            <label htmlFor="profilePicture" className="block text-sm font-medium text-gray-700 mb-1">
-              Profile Picture (optional)
-            </label>
-            <input
-              type="file"
-              id="profilePicture"
-              accept="image/*"
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#9C8D71]"
-            />
-          </div>
+          )}
 
-          
-          <button
-            type="submit"
-            className="w-full bg-[#70966D] text-white font-medium py-3 rounded-lg hover:bg-[#557046] transition"
-            disabled={loading}
-          >
-            {loading ? "Signing Up..." : "Sign Up"}
-          </button>
-        </form>
-
-        <p className="text-center text-sm text-gray-600 mt-4">
-          Already have an account?{" "}
-          <Link href="/Profile/Login" className="text-[#678D58] font-medium hover:underline">
-            Log In
-          </Link>
-        </p>
-      </div>
-    </main>
+          {activeTab === "shoppingList" && (
+            <div className="mt-6">
+              <ShoppingList />
+            </div>
+          )}
+        </section>
+      </main>
+    </div>
   );
-}
+};
+
+export default ProfilePage;
