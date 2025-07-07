@@ -1,51 +1,42 @@
-// "use client"; 
+"use client";
 
-// import { useEffect, useState } from "react";
-// import Image from "next/image";
-// import supabase, { getPublicImageUrl } from "@/src/supabase/supabaseClient";
+import Image from "next/image";
 
-// export default function TopUsers() {
-//   const [users, setUsers] = useState([]);
+const users = [
+  { name: "Emily", image: "/Emily.jpeg" },
+  { name: "Benjamin", image: "/Benjamin.jpeg" },
+  { name: "James", image: "/James.jpeg" },
+  { name: "Olivia", image: "/Olivia.jpeg" },
+  { name: "Sophia", image: "/Sophia.jpeg" },
+  { name: "Liam", image: "/Liam.jpeg" },
+  { name: "Charlotte", image: "/Charlotte.jpeg" },
+  { name: "Lucas", image: "/Lucas.jpeg" },
+];
 
-//   useEffect(() => {
-//     const fetchUsers = async () => {
-//       const { data, error } = await supabase
-//         .from("users") 
-//         .select("name, image");
-
-//       if (error) {
-//         console.error("Error fetching users:", error);
-//       } 
-      
-//       const usersWithImages = data?.map(user => ({
-//         ...user,
-//         image: user.image.startsWith("http") ? user.image : getPublicImageUrl(user.image)
-//       }));
-
-//       setUsers(usersWithImages);
-//     };
-
-//     fetchUsers();
-//   }, []);
-
-//   return (
-//     <div className="mt-10 mb-10 w-full flex justify-center font-kalam">
-//       <div className="flex justify-around w-[70%] items-center flex-wrap mb-6">
-//         {users.map((user, index) => (
-//           <div key={index} className="flex flex-col items-center space-y-2">
-//             <div className="h-[120px] w-[120px] rounded-full overflow-hidden">
-//               <Image
-//                 src={user.image}
-//                 alt={`${user.name} image`}
-//                 width={120}
-//                 height={120}
-//                 className="h-full w-full object-cover"
-//               />
-//             </div>
-//             <span className="text-lg font-semibold">{user.name}</span>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
+export default function TopUsers() {
+  return (
+    <div className="w-full font-kalam">
+      <div className="flex flex-wrap justify-start gap-7 px-4">
+        {users.map((user, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center w-[180px] sm:w-[200px] p-2 cursor-pointer"
+          >
+            <div className="w-full aspect-square rounded-full overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
+              <Image
+                src={user.image}
+                alt={`${user.name} image`}
+                width={200}
+                height={200}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <span className="text-base font-semibold text-[#233122e8] uppercase text-center truncate mt-3 transition-colors duration-300 ease-in-out hover:text-[#406030]">
+              {user.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

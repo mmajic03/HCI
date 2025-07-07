@@ -8,6 +8,7 @@ import RecommendedRecipes from "./components/RecommendedRecipes";
 import { RecipePost } from "./types";
 import Loading from "./loading";
 import MainSection from "./components/MainSection";
+import TopUsers from "./components/TopUsers";
 
 export default function Home() {
   const [posts, setPosts] = useState<RecipePost[]>([]);
@@ -95,17 +96,17 @@ export default function Home() {
             setVisibleCount={setVisibleCount}
           />
         </div>
-        <h2 className="text-3xl font-kalam text-[#2c3b2ae8] mb-2 mt-[30px] md:mt-[120px] w-full text-center lg:text-left">
+        <h2 className="text-3xl font-kalam text-[#2c3b2ae8] mb-2 mt-10 md:mt-[40px] w-full text-center lg:text-left">
           Popular recipes
         </h2>
         <div className="border-b border-[#2c3b2ae8] w-full"></div>
         <div className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 w-screen p-6 rounded-lg h-auto sm:h-[250px] justify-center items-center gap-6 overflow-x-auto mb-1 text-center lg:text-left">
           <PopularRecipes />
         </div>
-        <h2 className="text-3xl font-kalam text-[#2c3b2ae8] mb-2 mt-3 md:mt-[70px] w-full text-center lg:text-left">Top users</h2>
+        <h2 className="text-3xl font-kalam text-[#2c3b2ae8] mb-2 mt-3 md:mt-[30px] w-full text-center lg:text-left">Top users</h2>
         <div className="border-b border-[#2c3b2ae8] w-full"></div>
-        <div className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 w-screen p-6 rounded-lg h-auto sm:h-[250px] justify-center items-center gap-6 overflow-x-auto mb-8 text-center lg:text-left">
-          {/* Top users komponenta */}
+        <div className="flex flex-wrap sm:flex-nowrap space-x-0 sm:space-x-6 w-screen p-10 rounded-lg h-auto justify-center items-start gap-10 overflow-x-auto mb-8 text-center lg:text-left">
+          <TopUsers />
         </div>
       </main>
       <Footer />
