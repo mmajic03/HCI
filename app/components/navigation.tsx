@@ -93,7 +93,7 @@ export function Navigation() {
       </div>
 
       {isMenuOpen && (
-        <nav className="absolute top-[6rem] left-0 w-full bg-[#70966D] shadow-lg md:hidden">
+        <nav className="absolute top-[6rem] left-0 w-full bg-[#70966D] shadow-lg md:hidden z-50">
           <ul className="flex flex-col space-y-4 p-4">
             {pages.map((page, index) => processPage(page, index, pathname))}
           </ul>
