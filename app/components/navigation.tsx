@@ -57,13 +57,17 @@ export function Navigation() {
   return (
     <header className="bg-[#70966D] shadow-2xl w-screen py-8 flex items-center justify-between font-kalam">
       <div className="flex items-center space-x-2">
-        <Image
-          src="/logoCC.png"
-          alt="Logo"
-          width={156}
-          height={156}
-          className="pl-3"
-        />
+        <Link href="/">
+          <p>
+            <Image
+              src="/logoCC.png"
+              alt="Logo"
+              width={156}
+              height={156}
+              className="pl-3 cursor-pointer"
+            />
+          </p>
+        </Link>
       </div>
 
       <nav className="hidden md:flex max-w-7xl mr-8">
