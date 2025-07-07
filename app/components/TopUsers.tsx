@@ -5,7 +5,7 @@ import Image from "next/image";
 import supabase, { getPublicImageUrl } from "@/src/supabase/supabaseClient";
 
 export default function TopUsers() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<{ image: any; name: any; }[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -16,13 +16,16 @@ export default function TopUsers() {
       if (error) {
         console.error("Error fetching users:", error);
       } 
+
+      console.log("Fetched data from Supabase:", data); // samo provjera
       
       const usersWithImages = data?.map(user => ({
         ...user,
-        image: user.image.startsWith("http") ? user.image : getPublicImageUrl(user.image)
+        image: user.image?.startsWith("http") ? user.image : getPublicImageUrl(user.image)
+        
       }));
 
-      setUsers(usersWithImages);
+      setUsers(usersWithImages ?? []);
     };
 
     fetchUsers();
