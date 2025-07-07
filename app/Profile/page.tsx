@@ -1,13 +1,36 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Navigation } from "./_components/navigation";
-import Image from "next/image";
-import ShoppingList from "./ShoppingList/page";
-import SavedRecipes from "./SavedRecipes/page";
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/app/lib/supabase' 
+import { Navigation } from './_components/navigation'
+import Image from 'next/image'
+import ShoppingList from './ShoppingList/page'
+import SavedRecipes from './SavedRecipes/page'
 
 const ProfilePage = () => {
-  const [activeTab, setActiveTab] = useState("profile");
+  const [activeTab, setActiveTab] = useState('profile')
+  const [loading, setLoading] = useState(true)
+  const [userEmail, setUserEmail] = useState<string | null>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data, error } = await supabase.auth.getSession()
+      const session = data?.session
+
+      if (!session) {
+        router.push('/Profile/Login')
+      } else {
+        setUserEmail(session.user.email ?? null)
+        setLoading(false)
+      }
+    }
+
+    checkSession()
+  }, [router])
+
+  if (loading) return <div className="text-center mt-10">Loading...</div>
 
   return (
     <div className="h-full min-h-screen bg-[#A48F73] flex">
@@ -17,7 +40,7 @@ const ProfilePage = () => {
         </aside>
 
         <section className="w-5/6 pl-8">
-          {activeTab === "profile" && (
+          {activeTab === 'profile' && (
             <>
               <div className="flex items-center space-x-4 mb-8 mt-4">
                 <Image
@@ -28,7 +51,9 @@ const ProfilePage = () => {
                   height={96}
                 />
                 <div>
-                  <h2 className="text-2xl text-gray-800 border-gray-400 pb-1">Emily Brown</h2>
+                  <h2 className="text-2xl text-gray-800 border-gray-400 pb-1">
+                    {userEmail || 'Korisnik'}
+                  </h2>
                   <button className="mt-2 px-4 py-1.5 bg-[#70966D] text-black rounded-lg shadow hover:bg-[#467242] focus:outline-none focus:ring-2 focus:ring-[#70966D] text-sm">
                     Change photo
                   </button>
@@ -36,6 +61,7 @@ const ProfilePage = () => {
               </div>
 
               <form className="space-y-6 mt-2">
+                {/* tvoj form ostaje isti */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-gray-800 font-medium mb-2">First name</label>
@@ -76,13 +102,13 @@ const ProfilePage = () => {
             </>
           )}
 
-          {activeTab === "savedRecipes" && (
+          {activeTab === 'savedRecipes' && (
             <div className="mt-6">
               <SavedRecipes />
             </div>
           )}
 
-          {activeTab === "shoppingList" && (
+          {activeTab === 'shoppingList' && (
             <div className="mt-6">
               <ShoppingList />
             </div>
@@ -90,7 +116,7 @@ const ProfilePage = () => {
         </section>
       </main>
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePage;
+export default ProfilePage
