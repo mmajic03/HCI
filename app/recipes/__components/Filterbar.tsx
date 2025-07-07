@@ -54,7 +54,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
     <div className="bg-[#E4E0D3] p-4 rounded-lg w-full mb-6">
       <div className="flex flex-wrap lg:flex-nowrap items-start lg:items-center gap-4">
         <select
-          className="p-2 bg-[#E5E1CE] rounded border border-black text-sm flex-grow lg:flex-grow-0"
+          className="p-2 bg-[#E5E1CE] rounded border border-[#4e664be8] text-[#253d24e8] text-sm flex-grow lg:flex-grow-0"
           value={mealType}
           onChange={(e) => setMealType(e.target.value)}
         >
@@ -64,7 +64,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
           ))}
         </select>
         <select
-          className="p-2 bg-[#E5E1CE] rounded border border-black text-sm flex-grow lg:flex-grow-0"
+          className="p-2 bg-[#E5E1CE] rounded border border-[#4e664be8] text-[#253d24e8] text-sm flex-grow lg:flex-grow-0"
           value={minCalories}
           onChange={(e) => setMinCalories(e.target.value)}
         >
@@ -75,7 +75,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
           <option value="100">100+</option>
         </select>
         <select
-          className="p-2 bg-[#E5E1CE] rounded border border-black text-sm flex-grow lg:flex-grow-0"
+          className="p-2 bg-[#E5E1CE] rounded border border-[#4e664be8] text-[#253d24e8] text-sm flex-grow lg:flex-grow-0"
           value={selectedIngredient}
           onChange={(e) => setSelectedIngredient(e.target.value)}
         >
@@ -91,7 +91,7 @@ const FilterBar = ({ onFilterChange }: FilterBarProps) => {
           placeholder="Search ingredients..."
           value={ingredientsSearch}
           onChange={(e) => setIngredientsSearch(e.target.value)}
-          className="p-3 bg-[#E5E1CE] rounded border border-black text-sm w-60 ml-auto"
+          className="p-3 bg-[#E5E1CE] rounded border border-[#4e664be8] text-[#253d24e8] text-sm w-60 ml-auto"
         />
       </div>
     </div>

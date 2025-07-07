@@ -97,7 +97,7 @@ export default function HomePage() {
           )}
         </button>
 
-        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+        <h1 className="text-4xl font-bold text-[#3b4e39e8] mb-6 text-center ">
           {recipePost.name}
         </h1>
 
@@ -113,17 +113,17 @@ export default function HomePage() {
           </div>
 
           <div className="md:w-1/2 mt-6 md:mt-0">
-            <span className="font-semibold text-black text-lg">
+            <span className="font-semibold text-[#3b4e39e8] text-lg">
               Ingredients:
             </span>
-            <ul className="mt-4 list-disc list-inside text-gray-700 space-y-2">
+            <ul className="mt-4 list-disc list-inside text-gray-600 space-y-2">
               {recipePost.ingredients.map((ing, i) => (
                 <li key={i}>{ing}</li>
               ))}
             </ul>
 
-            <h2 className="mt-6 text-xl font-semibold text-black">Instructions</h2>
-            <ol className="mt-4 list-decimal list-inside text-gray-700 space-y-2">
+            <h2 className="mt-6 text-xl font-semibold text-[#3b4e39e8]">Instructions</h2>
+            <ol className="mt-4 list-decimal list-inside text-gray-600 space-y-2">
               {recipePost.instructions.map((step, i) => (
                 <li key={i}>{step}</li>
               ))}

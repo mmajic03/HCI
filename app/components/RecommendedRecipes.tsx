@@ -37,7 +37,7 @@ export default function RecommendedRecipes({
             <div className="flex justify-center mt-10">
               <button
                 onClick={() => setVisibleCount((prev) => prev + 3)}
-                className="bg-[#70966D] text-white py-5 px-6 rounded hover:bg-[#496047] transition"
+                className="bg-[#70966D] text-white py-5 px-6 rounded hover:bg-[#496047] transition mt-10"
               >
                 Load more...
               </button>

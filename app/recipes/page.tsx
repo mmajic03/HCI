@@ -144,7 +144,7 @@ export default function Recipes() {
                 />
               </div>
               <div className="p-10 flex flex-col flex-grow">
-                <h2 className="text-xl font-bold mb-2 pt-5">{post.name}</h2>
+                <h2 className="text-xl font-bold mb-2 pt-5 text-[#3b4e39e8]">{post.name}</h2>
                 <p className="text-gray-600 text-sm mb-4">
                   {post.ingredients.join(", ")}
                 </p>
@@ -162,11 +162,11 @@ export default function Recipes() {
         {visibleCount < filteredPosts.length && (
           <div className="flex justify-center mt-10">
             <button
-              onClick={() => setVisibleCount((p) => p + 4)}
-              className="bg-[#70966D] text-white py-5 px-6 rounded hover:bg-[#496047] transition"
-            >
-              Load more...
-            </button>
+                onClick={() => setVisibleCount((prev) => prev + 3)}
+                className="bg-[#70966D] text-white py-5 px-6 rounded hover:bg-[#496047] transition mt-10"
+              >
+                Load more...
+              </button>
           </div>
         )}
       </main>
