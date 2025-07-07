@@ -37,11 +37,11 @@ function processPage(page: Page, index: number, pathname: string) {
         className={
           page.path === "/"
             ? pathname === page.path
-              ? "border-2 border-[#ffffff] p-2 rounded text-white"
-              : "text-white"
+              ? "border-2 border-[#ffffff] p-2 rounded text-white px-2 py-2"
+              : "text-white px-4 py-2"
             : pathname.startsWith(page.path)
-            ? "border-2 border-[#ffffff] p-2 rounded text-white"
-            : "text-white"
+            ? "border-2 border-[#ffffff] p-2 rounded text-white px-2 py-2"
+            : "text-white px-4 py-2"
         }
       >
         {page.title}
@@ -71,7 +71,7 @@ export function Navigation() {
       </div>
 
       <nav className="hidden md:flex max-w-7xl mr-8">
-        <ul className="flex space-x-12">
+        <ul className="flex space-x-10">
           {pages.map((page, index) => processPage(page, index, pathname))}
         </ul>
       </nav>
