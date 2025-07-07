@@ -16,7 +16,7 @@ const users = [
 export default function TopUsers() {
   return (
     <div className="w-full font-kalam">
-      <div className="flex flex-wrap justify-start gap-7 px-4">
+      <div className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-start gap-7 px-4">
         {users.map((user, index) => (
           <div
             key={index}
