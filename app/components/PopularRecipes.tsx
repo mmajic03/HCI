@@ -55,7 +55,7 @@ export default function PopularRecipes() {
           />
           <Link
             href={`/home/${post.id}`}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#70966D] text-white py-4 px-3 rounded hover:bg-[#496047] transition font-semibold"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#70966D] text-white py-4 px-5 rounded hover:bg-[#496047] transition font-semibold"
           >
             Read more
           </Link>
