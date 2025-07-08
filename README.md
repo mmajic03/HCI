@@ -28,7 +28,8 @@
 - Link to Assignment 2: [**Assignment 2**](https://boiled-packet-d4d.notion.site/Korisni-ka-su-elja-projekt-12fb0a75ac3c805c9d6eec232135c5e8) <!-- Replace with actual URL -->
 - Link to Assignment 3: [**Assignment 3**](https://coolcook.vercel.app/) <!-- Replace with actual URL -->
 - Link to Assignment 4: [**Assignment 4**](https://boiled-packet-d4d.notion.site/HCI-Low-High-fidelity-prototy-15ab0a75ac3c80649358e9cb3e508f90)
-- Link to Assignment 5: [**Assignment 5**](https://hci-lemon.vercel.app/blog) 
+- Link to Assignment 5: [**Assignment 5**](https://hci-lemon.vercel.app/blog)
+- Link to Assignment 6: [**Assignment 6**](https://hci-lemon.vercel.app/)
 <!-- Add more assignments as necessary -->
 
 ## Project Requirements

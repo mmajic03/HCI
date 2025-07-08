@@ -1,35 +1,42 @@
+"use client";
+
 import Image from "next/image";
 
-
 const users = [
-    { name: "Emily", image: "/Emily.jpeg" },
-    { name: "Olivia", image: "/Olivia.jpeg" },
-    { name: "James", image: "/James.jpeg" },
-    { name: "Sophia", image: "/Sophia.jpeg" },
-    { name: "Benjamin", image: "/Benjamin.jpeg" },
-  ];
-  
-  export default function TopUsers() {
-    return (
-      <div className="mt-10 mb-10 w-full flex justify-center">
-        <div className="flex justify-around w-[70%] items-center flex-wrap mb-6">
-          {users.map((user, index) => (
-            <div key={index} className="flex flex-col items-center space-y-2">
-              <div className="h-[120px] w-[120px] rounded-full overflow-hidden">
-                <Image
-                  src={user.image}
-                  alt="user image"
-                  width={56}
-                  height={56}
-                  className="h-full w-full object-cover"
-                  
-                />
-              </div>
-              <span className="text-lg font-semibold">{user.name}</span>
+  { name: "Emily", image: "/Emily.jpeg" },
+  { name: "Benjamin", image: "/Benjamin.jpeg" },
+  { name: "James", image: "/James.jpeg" },
+  { name: "Olivia", image: "/Olivia.jpeg" },
+  { name: "Sophia", image: "/Sophia.jpeg" },
+  { name: "Liam", image: "/Liam.jpeg" },
+  { name: "Charlotte", image: "/Charlotte.jpeg" },
+  { name: "Lucas", image: "/Lucas.jpeg" },
+];
+
+export default function TopUsers() {
+  return (
+    <div className="w-full font-kalam">
+      <div className="flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-start gap-7 px-4">
+        {users.map((user, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center w-[180px] sm:w-[200px] p-2 cursor-pointer"
+          >
+            <div className="w-full aspect-square rounded-full overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
+              <Image
+                src={user.image}
+                alt={`${user.name} image`}
+                width={200}
+                height={200}
+                className="w-full h-full object-cover"
+              />
             </div>
-          ))}
-        </div>
+            <span className="text-base font-semibold text-[#233122e8] uppercase text-center truncate mt-3 transition-colors duration-300 ease-in-out hover:text-[#406030]">
+              {user.name}
+            </span>
+          </div>
+        ))}
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

@@ -13,11 +13,11 @@ const getSessionFavs = (): number[] =>
 const storeSessionFavs = (ids: number[]) =>
   sessionStorage.setItem("favoriteIds", JSON.stringify(ids));
 
-export default function HomePage() {
+export default function RecipePage() {
   const { id } = useParams() as { id: string };
   const recipeId = Number(id);
 
-  const [recipePost, setRecipePost] = useState<RecipePost | null>(null);
+  const [recipe, setRecipe] = useState<RecipePost | null>(null);
   const [favoriteIds, setFavoriteIds] = useState<number[]>(() =>
     typeof window === "undefined" ? [] : getSessionFavs()
   );
@@ -42,14 +42,14 @@ export default function HomePage() {
         ]);
 
         const recipeData: RecipePost = await recipeRes.json();
-        const { favorites }: { favorites: number[] } = await favRes.json();
+        const { favorites } = await favRes.json();
 
         if (favorites?.length) {
           storeSessionFavs(favorites);
           setFavoriteIds(favorites);
         }
 
-        setRecipePost(recipeData);
+        setRecipe(recipeData);
       } catch (err) {
         console.error("Error loading data:", err);
       } finally {
@@ -78,7 +78,7 @@ export default function HomePage() {
     storeSessionFavs(updated);
   };
 
-  if (loading || !recipePost) return <Loading />;
+  if (loading || !recipe) return <Loading />;
 
   const isFav = favoriteIds.includes(recipeId);
 
@@ -87,8 +87,8 @@ export default function HomePage() {
       <div className="max-w-5xl w-11/12 bg-white shadow-md rounded-lg p-6 relative my-8">
         <button
           onClick={toggleFavorite}
-          aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
           className="absolute top-5 right-5 text-2xl bg-white border-2 border-black p-2 rounded-full cursor-pointer transition hover:scale-110"
+          aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
         >
           {isFav ? (
             <FaHeart className="fill-red-500" />
@@ -97,34 +97,35 @@ export default function HomePage() {
           )}
         </button>
 
-        <h1 className="text-4xl font-bold text-[#3b4e39e8] mb-6 text-center ">
-          {recipePost.name}
+        <h1 className="text-4xl font-bold text-[#3b4e39e8] mb-6 text-center">
+          {recipe.name}
         </h1>
 
         <div className="flex flex-col md:flex-row md:space-x-8">
           <div className="md:w-1/2 flex justify-center">
             <Image
-              src={recipePost.image}
-              alt={recipePost.name}
+              src={recipe.image}
+              alt={recipe.name}
               width={350}
               height={350}
               className="object-contain rounded-lg max-h-[400px]"
             />
           </div>
-
           <div className="md:w-1/2 mt-6 md:mt-0">
             <span className="font-semibold text-[#3b4e39e8] text-lg">
               Ingredients:
             </span>
             <ul className="mt-4 list-disc list-inside text-gray-600 space-y-2">
-              {recipePost.ingredients.map((ing, i) => (
+              {recipe.ingredients.map((ing, i) => (
                 <li key={i}>{ing}</li>
               ))}
             </ul>
 
-            <h2 className="mt-6 text-xl font-semibold text-[#3b4e39e8]">Instructions</h2>
+            <h2 className="mt-6 text-xl font-semibold text-[#3b4e39e8]">
+              Instructions
+            </h2>
             <ol className="mt-4 list-decimal list-inside text-gray-600 space-y-2">
-              {recipePost.instructions.map((step, i) => (
+              {recipe.instructions.map((step, i) => (
                 <li key={i}>{step}</li>
               ))}
             </ol>

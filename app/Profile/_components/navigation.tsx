@@ -1,47 +1,58 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-
 type Page = {
   title: string;
+  emoji: string;
   path: `/${string}`;
+  tabKey: string;
 };
-// We hardcode pages here, but you could get this information from some external source (e.g. CMS, DB, config file, etc).
+
 const pages: Page[] = [
-  {
-    title: "Saved Recipes",
-    path: "/Profile/SavedRecipes",
+  { 
+    title: "Saved Recipes", 
+    emoji: "📖", 
+    path: "/Profile/SavedRecipes", 
+    tabKey: "savedRecipes" 
   },
-  {
-    title: "Shopping List",
-    path: "/Profile/ShoppingList",
+  { 
+    title: "Shopping List", 
+    emoji: "🛒", 
+    path: "/Profile/ShoppingList", 
+    tabKey: "shoppingList" 
   },
-  {
-    title: "Profile settings",
-    path: "/Profile/ProfileSettings",
-  }
+  { 
+    title: "Profile settings", 
+    emoji: "⚙️", 
+    path: "/Profile/ProfileSettings", 
+    tabKey: "profile" 
+  },
 ];
-function processPage(page: Page, index: number, pathname: string) {
-  return (
-    <li key={index}>
-      <Link
-        href={page.path}
-        className={
-          pathname === page.path ? "font-extrabold text-slate-600" : ""
-        }
-      >
-        {page.title}
-      </Link>
-    </li>
-  );
+
+interface NavigationProps {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
 }
-export function Navigation() {
-  const pathname = usePathname();
-  console.log(pathname);
+
+export function Navigation({ activeTab, setActiveTab }: NavigationProps) {
   return (
-    <ul className="flex justify-center space-x-4 mt-8">
-      {pages.map((page, index) => processPage(page, index, pathname))}
+    <ul className="flex flex-col mt-8 space-y-2">
+      {pages.map((page) => (
+        <li key={page.tabKey}>
+          <button
+            type="button"
+            onClick={() => setActiveTab(page.tabKey)}
+            className={
+              (activeTab === page.tabKey
+                ? "bg-[#70966D] text-white font-extrabold"
+                : "text-slate-800 hover:bg-[#C4D1B4]") +
+              " flex items-center space-x-3 rounded-md py-3 px-4 w-full text-left text-lg font-kalam transition-colors"
+            }
+          >
+            <span className="text-2xl">{page.emoji}</span>
+            <span className="hidden sm:inline">{page.title}</span>
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }
