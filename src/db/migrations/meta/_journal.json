@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1736439989263,
-      "tag": "0000_high_dakota_north",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1736443006687,
-      "tag": "0001_lyrical_veda",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1736858790409,
-      "tag": "0002_graceful_spot",
+      "when": 1737048700065,
+      "tag": "0000_noisy_prowler",
       "breakpoints": true
     }
   ]
