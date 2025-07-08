@@ -1,28 +1,35 @@
-import { Navigation } from "@/app/components/navigation";
-import Footer from "@/app/components/footer";
-import Card from "@/app/components/recipeCard";
-import NotFoundPage from "@/app/components/NotFoundPage";
+// app/inspiration/[cuisine]/page.tsx
 
+import RecipeCard from '@/app/components/Card'; 
+import { RecipePost } from '@/app/components/recipeCard';
 
-type PageProps = {
-  params: {
-    cuisine: string;
-  };
-};
+export default async function CuisinePage({ params }: { params: { cuisine: string } }) {
+  const cuisine = params.cuisine.toLowerCase();
 
-export default function CuisinePage({ params }: PageProps) {
-  const { cuisine } = params;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/recipes`);
+  const data = await res.json();
 
-  const validCuisines = ["italian", "greek", "japanese", "indian", "mexican", "chinese"];
+  const filteredRecipes: RecipePost[] = data.recipes.filter(
+    (recipe: RecipePost) => recipe.cuisine.toLowerCase() === cuisine
+  );
 
-  if (!validCuisines.includes(cuisine)) {
-    return <NotFoundPage />;
+  if (!filteredRecipes || filteredRecipes.length === 0) {
+    return (
+      <div className="text-center py-20 text-white bg-[#b39a74] min-h-screen">
+        <h1 className="text-4xl font-bold mb-4 capitalize">{cuisine}</h1>
+        <p className="text-lg">No recipes found for this cuisine.</p>
+      </div>
+    );
   }
 
   return (
-    <main className="p-10">
-      <h1 className="text-4xl font-bold">Recipes for {cuisine} Cuisine</h1>
-      <p>Here are some delicious {cuisine} recipes.</p>
-    </main>
+    <div className="bg-[#b39a74] min-h-screen px-6 py-12">
+      <h1 className="text-4xl font-bold text-center mb-10 capitalize">{cuisine} Recipes</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredRecipes.map((recipe: RecipePost) => (
+          <RecipeCard key={recipe.id} post={recipe} />
+        ))}
+      </div>
+    </div>
   );
 }
