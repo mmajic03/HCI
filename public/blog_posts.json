@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "John Smith",
+        "title": "The Art of Perfect Soups",
+        "body": "Learn how to prepare rich, delicious soups with the perfect balance of ingredients and spices.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/The-Ultimate-Chicken-Noodle-Soup_EXPS_FT24_192832_JR_0208_9.jpg?fit=700,700"
+    },
+    {
+        "id": 2,
+        "name": "Emily Johnson",
+        "title": "Grilling Tips for Beginners",
+        "body": "Master the art of grilling with essential tips on fire control, cooking time, and selecting the best cuts of meat.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2024/11/Grilled-Cheeseburgers_EXPS_FT24_277103_EC_1101_1.jpg?fit=300,300&webp=1"
+    },
+    {
+        "id": 3,
+        "name": "Jessica Williams",
+        "title": "Delicious Smoothie Recipes",
+        "body": "Simple and tasty smoothie recipes that will provide you with a refreshing and healthy start to your day.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2023/04/Spinach-Smoothie_EXPS_FT23_273350_ST_3_23_1.jpg?fit=300,300&webp=1"
+    },
+    {
+        "id": 4,
+        "name": "Michael Brown",
+        "title": "Making Homemade Pancakes",
+        "body": "A step-by-step guide to making fluffy and delicious pancakes, from batter to filling.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2025/02/Danish-Pancakes_EXPS_TOHD24_44542_OrlyCatz_8.jpg?fit=300,300&webp=1"
+    },
+    {
+        "id": 5,
+        "name": "David Miller",
+        "title": "Essential Spices You Should Always Have in Your Kitchen",
+        "body": "Essential spices that will enhance your cooking and bring out the best flavors in your dishes.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2023/10/GettyImages-1154618104-spices-and-herbs-FT-JVedit.jpg?fit=700%2C467"
+    },
+    {
+        "id": 6,
+        "name": "Sarah Davis",
+        "title": "15-Minute Dinners for Busy Evenings",
+        "body": "Quick and easy dinner ideas that you can prepare in under 15 minutes without compromising on taste.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Blackened-Tilapia-with-Zucchini-Noodles_EXPS_TOHAM23_200349_P2_MD_11_04_7b.jpg?fit=700,700"
+    },
+    {
+        "id": 7,
+        "name": "James Wilson",
+        "title": "Mastering the Art of Stir-Fry",
+        "body": "Learn how to perfect the stir-fry technique with simple tricks and tips to achieve restaurant-quality flavors.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2018/01/exps8363_TH2499C10A.jpg?fit=300,300&webp=1"
+    },
+    {
+        "id": 8,
+        "name": "Olivia Martinez",
+        "title": "Baking Without Sugar: The Best Alternatives",
+        "body": "Discover healthier substitutes for sugar in your baking recipes and create guilt-free treats everyone will love.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/0001/01/Chia-Seed-Protein-Bites-_EXPS_THFM19_227074_B09_26_4b.jpg?fit=700,700"
+    },
+    {
+        "id": 9,
+        "name": "William Anderson",
+        "title": "The Ultimate Guide to Freezing Food",
+        "body": "Tips on how to properly freeze food to preserve its freshness and nutritional value.",
+        "imageUrl": "https://www.tasteofhome.com/wp-content/uploads/2024/03/Close-up-of-frozen-vegetables-GettyImages-488875558.jpg?fit=300,300&webp=1"
+    }
+]
