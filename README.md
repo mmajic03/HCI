@@ -1,7 +1,7 @@
 # Semester Project <!-- omit in toc -->
 
 - [Project Structure](#project-structure)
-- [My Project Links](#my-project-links)
+- [Project Links](#my-project-links)
   - [Semester Project](#semester-project)
   - [Semester Assignments](#semester-assignments)
 - [Project Requirements](#project-requirements)
@@ -10,27 +10,25 @@
 
 ## Project Structure
 
-- **`/`**: The source code of your main project
-- **`/assignments`**: Results of your semester assignments
-- **`/docs`**: If using GitHub for documentation (e.g., your final report in Markdown format)
+- **`/`**: The source code of main project
+- **`/assignments`**: Results of semester assignments
 
-## My Project Links
+## Project Links
 
 ### Semester Project
 
-- Link to your production version: [**Production Version**](URL_TO_PRODUCTION_VERSION) <!-- Replace with actual URL -->
-- Link to your final report: [**Final Report**](URL_TO_FINAL_REPORT) <!-- Replace with actual URL -->
-<!-- Add more as necessary -->
+- Link to production version: [**Production Version**](https://hci-lemon.vercel.app/) 
+- Link to your final report: [**Final Report**](https://river-top-efc.notion.site/COOLCOOK-izvje-taj-22826d18c2438051a5c5e674ca54fe63) 
+
 
 ### Semester Assignments
 
-- Link to Assignment 1: [**Assignment 1**](https://github.com/mmajic03/HCI/blob/main/assignments/assigment1.mkv) <!-- Replace with actual URL -->
-- Link to Assignment 2: [**Assignment 2**](https://boiled-packet-d4d.notion.site/Korisni-ka-su-elja-projekt-12fb0a75ac3c805c9d6eec232135c5e8) <!-- Replace with actual URL -->
-- Link to Assignment 3: [**Assignment 3**](https://coolcook.vercel.app/) <!-- Replace with actual URL -->
+- Link to Assignment 1: [**Assignment 1**](https://github.com/mmajic03/HCI/blob/main/assignments/assigment1.mkv) 
+- Link to Assignment 2: [**Assignment 2**](https://boiled-packet-d4d.notion.site/Korisni-ka-su-elja-projekt-12fb0a75ac3c805c9d6eec232135c5e8) 
+- Link to Assignment 3: [**Assignment 3**](https://coolcook.vercel.app/) 
 - Link to Assignment 4: [**Assignment 4**](https://boiled-packet-d4d.notion.site/HCI-Low-High-fidelity-prototy-15ab0a75ac3c80649358e9cb3e508f90)
 - Link to Assignment 5: [**Assignment 5**](https://hci-lemon.vercel.app/blog)
 - Link to Assignment 6: [**Assignment 6**](https://hci-lemon.vercel.app/)
-<!-- Add more assignments as necessary -->
 
 ## Project Requirements
 
@@ -49,4 +47,4 @@
 - [ ] The production version will be deployed online on an appropriate cloud platform ([Vercel](https://vercel.com), [Netlify](https://www.netlify.com/) or a similar service)
 - [ ] Analyze the application's performance ([PageSpeed Insights](https://pagespeed.web.dev/))
 - [ ] The analysis results will be part of the final report
-# vercel-deploy
+
