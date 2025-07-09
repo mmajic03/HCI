@@ -16,7 +16,7 @@ export default async function CuisinePage({ params }: { params: { cuisine: strin
   if (!filteredRecipes || filteredRecipes.length === 0) {
     return (
       <div className="text-center py-20 text-white bg-[#b39a74] min-h-screen">
-        <h1 className="text-4xl font-bold mb-4 capitalize">{cuisine}</h1>
+        <h1 className="text-4xl text-[#2c3b2ae8] font-bold mb-4 capitalize">{cuisine}</h1>
         <p className="text-lg">No recipes found for this cuisine.</p>
       </div>
     );
@@ -24,7 +24,7 @@ export default async function CuisinePage({ params }: { params: { cuisine: strin
 
   return (
     <div className="bg-[#b39a74] min-h-screen px-6 py-12">
-      <h1 className="text-4xl font-bold text-center mb-10 capitalize">{cuisine} Recipes</h1>
+      <h1 className="text-4xl text-[#2c3b2ae8] font-bold text-center mb-10 capitalize">{cuisine} Recipes</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredRecipes.map((recipe: RecipePost) => (
           <RecipeCard key={recipe.id} post={recipe} />

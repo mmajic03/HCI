@@ -16,7 +16,7 @@ export default function Inspiration() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-10 bg-[#9C8D71E8] relative">
-      <h1 className="text-6xl font-extrabold tracking-tight mb-12">Inspiration</h1>
+      <h1 className="text-6xl text-[#2c3b2ae8] font-extrabold tracking-tight mb-12">Inspiration</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 mb-12 gap-8 w-full max-w-7xl px-4  ">
         {kitchens.map((kitchen) => (
