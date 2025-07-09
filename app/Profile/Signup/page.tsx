@@ -25,7 +25,7 @@ export default function SignUp() {
     if (error) {
       setError(error.message);
     } else {
-      setMessage('Registracija uspješna!');
+      setMessage('Successful!');
       router.push('/Profile');
     }
 
@@ -35,7 +35,7 @@ export default function SignUp() {
   return (
     <main className="flex min-h-screen w-screen flex-col items-center p-10 bg-[#9C8D71E8]">
       <div className="bg-[#EDE8DF] w-full max-w-md p-10 mt-[100px] rounded-lg shadow-md">
-        <h1 className="text-center text-[#537944] text-2xl font-bold mb-6">Registracija</h1>
+        <h1 className="text-center text-[#537944] text-2xl font-bold mb-6">Sign up</h1>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {message && <p className="text-green-600 text-center mb-4">{message}</p>}
@@ -51,14 +51,14 @@ export default function SignUp() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#9C8D71]"
-              placeholder="Unesite email"
+              placeholder="Enter email"
               required
             />
           </div>
 
           <div className="mb-6">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Lozinka
+              Password
             </label>
             <input
               type="password"
@@ -66,7 +66,7 @@ export default function SignUp() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#9C8D71]"
-              placeholder="Unesite lozinku"
+              placeholder="Enter password"
               required
             />
           </div>
@@ -76,14 +76,14 @@ export default function SignUp() {
             disabled={loading}
             className="w-full bg-[#70966D] text-white font-medium py-3 rounded-lg hover:bg-[#557046] transition disabled:opacity-50"
           >
-            {loading ? 'Registriram...' : 'Registriraj se'}
+            {loading ? 'Loading...' : 'Sign up'}
           </button>
         </form>
 
         <p className="text-center text-sm text-gray-600 mt-4">
-          Već imate račun?{' '}
+          Already have an account?{' '}
           <Link href="/Profile/Login" className="text-[#678D58] font-medium hover:underline">
-            Prijavi se
+            Sign in
           </Link>
         </p>
       </div>
