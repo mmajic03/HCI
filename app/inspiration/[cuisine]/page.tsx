@@ -1,7 +1,7 @@
 // app/inspiration/[cuisine]/page.tsx
 
 import RecipeCard from '@/app/components/Card'; 
-import { RecipePost } from '@/app/components/recipeCard';
+import { RecipePost } from '@/app/types';
 
 export default async function CuisinePage({ params }: { params: { cuisine: string } }) {
   const cuisine = params.cuisine.toLowerCase();
